@@ -9,96 +9,123 @@ function draw_clock(obj) {
 
   //set angle mode to degrees
   angleMode(DEGREES);
-  let secondsToDegrees = map(obj.seconds, 0, 59, 0, 359)
+  let secondsToDegrees = map(obj.seconds, 0, 59, 0, 359);
 
-  // set origin point in canvas's centre
+  // set origin circle in canvas's centre
   translate(width/2, height/2);
 
   // animated rotation
   rotate(secondsToDegrees);
+
 
   // draw digtial clock function
   clockDigital();
 
 }
 
-// // digital clock
-// function clockDigital() {
-//   // AM
-//   textSize(25)
-//   text('AM', 0, 0);
-
-//   // hours
-//   textSize(25)
-//   text('12', 0, 50);
-
-//   // colon
-//   textSize(25)
-//   text(':', 0, 80);
-
-//   // minutes
-//   textSize(25)
-//   text('01', 0, 110);
-// }
-
 // digital clock
 function clockDigital() {
   // set circle style
-  stroke(255);
-  strokeWeight(8);
+  strokeWeight(3.5);
 
-  point(100, -30);
-  point(100, -20);
-  point(100, -10);
-  point(100, 0);
-  point(100, 10);
-  point(100, 20);
-  point(100, 30);
-  point(110, 20);
-  
-  point(50, -30);
-  point(50, -20);
-  point(50, -10);
-  point(50, 0);
-  point(50, 10);
-  point(50, 20);
-  point(50, 30);
-  point(60, 20);
+  colorMode(RGB, 255, 255, 255, 1);
+  let d = 3.5;
+  strokeWeight(0);
+  fill(255);
 
-  point(0, -20);
-  point(0, 20);
+  // A
+  circle(-25, -10, d);
+  circle(-25, -5, d);
+  circle(-25, 0, d);
+  circle(-25, 5, d);
+  circle(-25, 10, d);
+  circle(-25, 15, d);
+  circle(-20, -15, d);
+  circle(-15, -15, d);
+  circle(-10, -15, d);
+  circle(-20, 0, d);
+  circle(-15, 0, d);
+  circle(-10, 0, d);
+  circle(-5, -10, d);
+  circle(-5, -5, d);
+  circle(-5, 0, d);
+  circle(-5, 5, d);
+  circle(-5, 10, d);
+  circle(-5, 15, d);
 
-  point(-40, -30);
-  point(-50, -30);
-  point(-60, -30);
-  point(-70, -20);
-  point(-70, -10);
-  point(-70, 0);
-  point(-70, 10);
-  point(-70, 20);
-  point(-40, 30);
-  point(-50, 30);
-  point(-60, 30);
-  point(-30, -20);
-  point(-30, -10);
-  point(-30, 0);
-  point(-30, 10);
-  point(-30, 20);
-  
-  point(-90, -30);
-  point(-100, -30);
-  point(-110, -30);
-  point(-120, -20);
-  point(-120, -10);
-  point(-120, 0);
-  point(-120, 10);
-  point(-120, 20);
-  point(-90, 30);
-  point(-100, 30);
-  point(-110, 30);
-  point(-80, -20);
-  point(-80, -10);
-  point(-80, 0);
-  point(-80, 10);
-  point(-80, 20);
+  // M
+  circle(25, -15, d);
+  circle(25, -10, d);
+  circle(25, -5, d);
+  circle(25, 0, d);
+  circle(25, 5, d);
+  circle(25, 10, d);
+  circle(25, 15, d);
+  circle(20, -10, d);
+  circle(15, -5, d);
+  circle(10, -10, d);
+  circle(5, -15, d);
+  circle(5, -10, d);
+  circle(5, -5, d);
+  circle(5, 0, d);
+  circle(5, 5, d);
+  circle(5, 10, d);
+  circle(5, 15, d);
+
+  // 4
+  circle(10, 60, d);
+  circle(10, 65, d);
+  circle(10, 70, d);
+  circle(10, 75, d);
+  circle(10, 80, d);
+  circle(10, 85, d);
+  circle(10, 90, d);
+  circle(5, 75, d);
+  circle(0, 75, d);
+  circle(-5, 75, d);
+  circle(-10, 75, d);
+  circle(-10, 70, d);
+  circle(-10, 65, d);
+  circle(-10, 60, d);
+
+  // :
+  circle(0, 110, d);
+  circle(0, 125, d);
+
+  // 0
+  circle(0, 145, d);
+  circle(5, 145, d);
+  circle(10, 150, d);
+  circle(10, 155, d);
+  circle(10, 160, d);
+  circle(10, 165, d);
+  circle(10, 170, d);
+  circle(5, 175, d);
+  circle(0, 175, d);
+  circle(-5, 145, d);
+  circle(-10, 150, d);
+  circle(-10, 155, d);
+  circle(-10, 160, d);
+  circle(-10, 165, d);
+  circle(-10, 170, d);
+  circle(-5, 175, d);
+
+  // 8
+  circle(0, 195, d);
+  circle(5, 195, d);
+  circle(10, 200, d);
+  circle(10, 205, d);
+  circle(10, 215, d);
+  circle(10, 220, d);
+  circle(5, 225, d);
+  circle(-5, 210, d);
+  circle(0, 210, d);
+  circle(5, 210, d);
+  circle(0, 225, d);
+  circle(-5, 195, d);
+  circle(-10, 200, d);
+  circle(-10, 205, d);
+  circle(-10, 215, d);
+  circle(-10, 220, d);
+  circle(-5, 225, d);
 }
