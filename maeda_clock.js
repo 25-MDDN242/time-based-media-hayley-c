@@ -25,107 +25,117 @@ function draw_clock(obj) {
 
 // digital clock
 function clockDigital() {
+
   // set circle style
-  strokeWeight(3.5);
+  colorMode(RGB, 255, 255, 255, 1); // RBGA colour mode
+  strokeWeight(0); // no outline
+  fill(167, 209, 232); // light blue colour
 
-  colorMode(RGB, 255, 255, 255, 1);
-  let d = 3.5;
-  strokeWeight(0);
-  fill(255);
-
+  // coordinates array of circle font
+  let timeArray = [
+  
   // A
-  circle(-25, -10, d);
-  circle(-25, -5, d);
-  circle(-25, 0, d);
-  circle(-25, 5, d);
-  circle(-25, 10, d);
-  circle(-25, 15, d);
-  circle(-20, -15, d);
-  circle(-15, -15, d);
-  circle(-10, -15, d);
-  circle(-20, 0, d);
-  circle(-15, 0, d);
-  circle(-10, 0, d);
-  circle(-5, -10, d);
-  circle(-5, -5, d);
-  circle(-5, 0, d);
-  circle(-5, 5, d);
-  circle(-5, 10, d);
-  circle(-5, 15, d);
+  [-25, -10],
+  [-25, -5],
+  [-25, 0],
+  [-25, 5],
+  [-25, 10],
+  [-25, 15],
+  [-20, -15],
+  [-15, -15],
+  [-10, -15],
+  [-20, 0],
+  [-15, 0],
+  [-10, 0],
+  [-5, -10],
+  [-5, -5],
+  [-5, 0],
+  [-5, 5],
+  [-5, 10],
+  [-5, 15],
 
   // M
-  circle(25, -15, d);
-  circle(25, -10, d);
-  circle(25, -5, d);
-  circle(25, 0, d);
-  circle(25, 5, d);
-  circle(25, 10, d);
-  circle(25, 15, d);
-  circle(20, -10, d);
-  circle(15, -5, d);
-  circle(10, -10, d);
-  circle(5, -15, d);
-  circle(5, -10, d);
-  circle(5, -5, d);
-  circle(5, 0, d);
-  circle(5, 5, d);
-  circle(5, 10, d);
-  circle(5, 15, d);
+  [25, -15],
+  [25, -10],
+  [25, -5],
+  [25, 0],
+  [25, 5],
+  [25, 10],
+  [25, 15],
+  [20, -10],
+  [15, -5],
+  [10, -10],
+  [5, -15],
+  [5, -10],
+  [5, -5],
+  [5, 0],
+  [5, 5],
+  [5, 10],
+  [5, 15],
 
   // 4
-  circle(10, 60, d);
-  circle(10, 65, d);
-  circle(10, 70, d);
-  circle(10, 75, d);
-  circle(10, 80, d);
-  circle(10, 85, d);
-  circle(10, 90, d);
-  circle(5, 75, d);
-  circle(0, 75, d);
-  circle(-5, 75, d);
-  circle(-10, 75, d);
-  circle(-10, 70, d);
-  circle(-10, 65, d);
-  circle(-10, 60, d);
+  [10, 60],
+  [10, 65],
+  [10, 70],
+  [10, 75],
+  [10, 80],
+  [10, 85],
+  [10, 90],
+  [5, 75],
+  [0, 75],
+  [-5, 75],
+  [-10, 75],
+  [-10, 70],
+  [-10, 65],
+  [-10, 60],
 
   // :
-  circle(0, 110, d);
-  circle(0, 125, d);
+  [0, 110],
+  [0, 125],
 
   // 0
-  circle(0, 145, d);
-  circle(5, 145, d);
-  circle(10, 150, d);
-  circle(10, 155, d);
-  circle(10, 160, d);
-  circle(10, 165, d);
-  circle(10, 170, d);
-  circle(5, 175, d);
-  circle(0, 175, d);
-  circle(-5, 145, d);
-  circle(-10, 150, d);
-  circle(-10, 155, d);
-  circle(-10, 160, d);
-  circle(-10, 165, d);
-  circle(-10, 170, d);
-  circle(-5, 175, d);
+  [0, 145],
+  [5, 145],
+  [10, 150],
+  [10, 155],
+  [10, 160],
+  [10, 165],
+  [10, 170],
+  [5, 175],
+  [0, 175],
+  [-5, 145],
+  [-10, 150],
+  [-10, 155],
+  [-10, 160],
+  [-10, 165],
+  [-10, 170],
+  [-5, 175],
 
   // 8
-  circle(0, 195, d);
-  circle(5, 195, d);
-  circle(10, 200, d);
-  circle(10, 205, d);
-  circle(10, 215, d);
-  circle(10, 220, d);
-  circle(5, 225, d);
-  circle(-5, 210, d);
-  circle(0, 210, d);
-  circle(5, 210, d);
-  circle(0, 225, d);
-  circle(-5, 195, d);
-  circle(-10, 200, d);
-  circle(-10, 205, d);
-  circle(-10, 215, d);
-  circle(-10, 220, d);
-  circle(-5, 225, d);
+  [0, 195],
+  [5, 195],
+  [10, 200],
+  [10, 205],
+  [10, 215],
+  [10, 220],
+  [5, 225],
+  [-5, 210],
+  [0, 210],
+  [5, 210],
+  [0, 225],
+  [-5, 195],
+  [-10, 200],
+  [-10, 205],
+  [-10, 215],
+  [-10, 220],
+  [-5, 225],
+
+  ];
+
+  // adding x and y coordinate elements to the array
+  for (let i = 0; i < timeArray.length; i++) {
+    let x = timeArray[i][0]; // x coordinate
+    let y = timeArray[i][1]; // y coordinate
+    circle(x, y, 3.5); // 3.5 diameter circle
+  }
 }

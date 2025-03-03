@@ -5,3 +5,13 @@
 ### THIS IS YOUR README
 
 Update this file as you go along to record your progress.
+
+Part 1: Sketch 
+
+The initial sketch of my original clock was inspired by Kircher’s sunflower clock, which uses the heliotropic nature of a sunflower to indicate the time as the flower rotates to face the sun, and Linnaeus’s flower clock, where different species of flowers would open and close at particular times of the day to indicate the time. Although both of these clocks are not realistic methods of telling time, I found the idea of using the behaviour of flowers an intriguing way of visually representing the concept of time. 
+
+ 
+
+Part 2: Maeda Clock 
+
+The Maeda clock I have recreates is the vertical digital clock that emulates the seconds hand of an analogue clock to indicate the number of seconds that have passed. I chose to recreate this clock as I feel the rotation of the digital clock is similar to the rotation of the central flower in my original clock, therefore helping to refresh and practice JavaScript skills. A small change I made was using circles rather than squares to create the font of the numbers. 
