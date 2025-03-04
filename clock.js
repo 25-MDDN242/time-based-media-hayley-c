@@ -17,6 +17,7 @@ function draw_clock(obj) {
   background(141, 142, 143);
 
   push();
+  ellipseMode(CENTER)
   translate(width/2, height/2);
   noFill();
   strokeWeight(1)
@@ -40,24 +41,47 @@ function draw_clock(obj) {
 
 function centreFlower() {
   colorMode(RGB, 255, 255, 255, 1);
-  ellipseMode(CORNER);
+  ellipseMode(CENTER);
   angleMode(DEGREES);
   // let petalLength = map(obj.seconds, 0, 359, 0, 30)
   push();
   noStroke();
-  fill(210, 231, 250, 0.2);
+  fill(210, 231, 250, 0.4);
   translate(width/2, height/2);
-  for (let i = 0; i <= 30; i++) {
-    rotate(12);
-    ellipse(0, 0, 25, 150);
+  push();
+  ellipse(0, 10, 25, 150)
+  pop();
+  push();
+  rotate(30);
+  ellipse(0, 10, 25, 150)
+  pop();
+  push();
+  rotate(60);
+  ellipse(0, 10, 25, 150)
+  pop();
+  push();
+  rotate(90);
+  ellipse(0, 10, 25, 150)
+  pop();
+  push();
+  rotate(120);
+  ellipse(0, 10, 25, 150)
+  pop();
+  push();
+  rotate(150);
+  ellipse(0, 10, 25, 150)
+  pop();
 
-    // if(petalLength > 30) {
-    //   petalLength = 30
-    // }
-  
-  }
+  // push();
+  // for (let i = 0; i <= 12; i++) {
+  //   rotate(30);
+  //   ellipse(0, 0, 25, 150);
+  // }
+  // pop();
+  rotate(60)
   fill(239, 230, 252);
-  circle(0, 0, 25);
+  ellipseMode(CENTER);
+  ellipse(0, 0, 35, 20);
   pop();
 }
 
