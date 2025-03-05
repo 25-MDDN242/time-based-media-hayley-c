@@ -2,6 +2,10 @@
  * use p5.js to draw a clock on a 960x500 canvas
  */
 
+var angle = 0;	// initialize angle variable
+var scalar = 10;  // set the radius of circle
+var startX = 0;	// set the x-coordinate for the circle center
+var startY = 0;	// set the y-coordinate for the circle center
 
 function draw_clock(obj) {
   // draw your own clock here based on the values of obj:
@@ -14,96 +18,35 @@ function draw_clock(obj) {
   //        = 0 if the alarm is currently going off
   //        > 0 --> the number of seconds until alarm should go off
 
-  background(141, 142, 143);
-
-  push();
-  ellipseMode(CENTER)
+  background(30, 60, 82);
   translate(width/2, height/2);
-  noFill();
-  strokeWeight(1)
-  stroke(75, 77, 89);
-  ellipse(0, 10, 610, 310);
-  ellipse(0, 10, 590, 290);
-  strokeWeight(10)
-  stroke(93, 95, 110);
-  ellipse(0, 10, 600, 300);
-  ellipse(0, 0, 600, 300);
-  ellipse(0, -10, 600, 300);
-  strokeWeight(1)
-  stroke(75, 77, 89);
-  ellipse(0, -10, 590, 290);
-  ellipse(0, -10, 610, 310);
-  pop();
+  angleMode(DEGREES);
 
-  centreFlower();
+  var x = startX + scalar * cos(angle);
+  var y = startY + scalar * sin(angle);
+
+  let lilypadSpin = map(obj.minutes, 0, 59, 0, 359);
+  rotate(lilypadSpin);
+  centreFlower(x, y);
+
+  angle++;
 
 }
 
-function centreFlower() {
+function centreFlower(x, y) {
   colorMode(RGB, 255, 255, 255, 1);
-  ellipseMode(CENTER);
   angleMode(DEGREES);
-  // let petalLength = map(obj.seconds, 0, 359, 0, 30)
   push();
+  translate(x, y);
   noStroke();
-  fill(210, 231, 250, 0.4);
-  translate(width/2, height/2);
-  push();
-  ellipse(0, 10, 25, 150)
-  pop();
-  push();
-  rotate(30);
-  ellipse(0, 10, 25, 150)
-  pop();
-  push();
-  rotate(60);
-  ellipse(0, 10, 25, 150)
-  pop();
-  push();
-  rotate(90);
-  ellipse(0, 10, 25, 150)
-  pop();
-  push();
-  rotate(120);
-  ellipse(0, 10, 25, 150)
-  pop();
-  push();
-  rotate(150);
-  ellipse(0, 10, 25, 150)
-  pop();
-
-  // push();
-  // for (let i = 0; i <= 12; i++) {
-  //   rotate(30);
-  //   ellipse(0, 0, 25, 150);
-  // }
-  // pop();
-  rotate(60)
-  fill(239, 230, 252);
-  ellipseMode(CENTER);
-  ellipse(0, 0, 35, 20);
-  pop();
-}
-
-function miniFlower() {
-  colorMode(RGB, 255, 255, 255, 1);
-  ellipseMode(CENTER);
-  angleMode(DEGREES);
-  // let petalLength = map(obj.seconds, 0, 359, 0, 30)
-  push();
-  noStroke();
-  fill(210, 231, 250, 0.2);
-  translate(width/2, height/2);
+  fill(34, 112, 51);
+  arc(0, 0, 250, 250, -70, 270);
+  fill(250, 172, 231, 0.4);
   for (let i = 0; i <= 12; i++) {
     rotate(30);
-    ellipse(0, 0, 5,0+frameCount*0.05);
-
-    // if(petalLength > 30) {
-    //   petalLength = 30
-    // }
-  
+    ellipse(0, 0, 40, 100 + obj.seconds);
   }
-  fill(239, 230, 252);
-  circle(0, 0, 5);
+  fill(240, 209, 36);
+  ellipse(0, 0, 50);
   pop();
 }

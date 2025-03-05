@@ -10,10 +10,21 @@ Update this file as you go along to record your progress.
 
 The initial sketch of my original clock was inspired by Kircher’s sunflower clock, which uses the heliotropic nature of a sunflower to indicate the time as the flower rotates to face the sun, and Linnaeus’s flower clock, where different species of flowers would open and close at particular times of the day to indicate the time. Although both of these clocks are not realistic methods of telling time, I found the idea of using the behaviour of flowers an intriguing way of visually representing the concept of time. 
 
+Kircher's sunflower clock:
 ![Kircher's sunflower clock.](https://lh3.googleusercontent.com/ci/AL18g_R0ehquoKDgFWay6DCSqpdE44Qiy1jwG7ZRqv2_z33NuanKep_24mv4b0gPVqRe2H4q_9SspQ=s1200)
 
+Linnaeus's flower clock:
 ![Linnaeus's flower clock.](https://static01.nyt.com/images/2015/01/29/garden/29GARDEN1/29GARDEN1-superJumbo.jpg)
 
 ### Part 2: Maeda Clock 
 
 The Maeda clock I have recreates is the vertical digital clock that emulates the seconds hand of an analogue clock to indicate the number of seconds that have passed. I chose to recreate this clock as I feel the rotation of the digital clock is similar to the rotation of the central flower in my original clock, therefore helping to refresh and practice JavaScript skills. A small change I made was using circles rather than squares to create the font of the numbers. 
+
+### Part 2: Original Clock 
+
+#### Orbiting Flower
+To create the effect of the flower moving in a circle I referenced Move in a Circle by kchung [Move in a Circle example sketch](https://editor.p5js.org/kchung/sketches/SJkdHhWUQ)
+
+### Part 2: Clock Alarm
+
+### Part 5: Final Clock 
