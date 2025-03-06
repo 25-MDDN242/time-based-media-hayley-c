@@ -25,6 +25,10 @@ The Maeda clock I have recreates is the vertical digital clock that emulates the
 #### Orbiting Flower
 To create the effect of the flower moving in a circle I referenced Move in a Circle by kchung [Move in a Circle example sketch](https://editor.p5js.org/kchung/sketches/SJkdHhWUQ)
 
+Because of the difficulty of rotating a sunflower, I decided to change my idea slightly. Rather than a sunflower, I chose to create a water lily in a pond. The water lily petals blooms to show the seconds, and the lilypad shows the minutes. I am also currently working on a koi fish to swim around the pond to show the seconds. I haven't yet decided how I want to display the hours or what the alarm function will look like.
+
+Although the water lily pond idea has a lot of potential, I was still quite attached to the idea of a heliotropic sunflower. Rather than a front on perspective of a spinning sunflower, I want to try using a top down perspective and rotate the sunflower in a circle which would be easier to create. I think using a shadow behind the flower and an orbit sun will help sell the idea. 
+
 ### Part 2: Clock Alarm
 
 ### Part 5: Final Clock 
