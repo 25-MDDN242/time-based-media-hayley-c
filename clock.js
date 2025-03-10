@@ -49,6 +49,9 @@ function draw_clock(obj) {
   koi();
   pop();
 
+  push();
+    daisy(0, 175)
+  pop();
 
   // angle++;
 
@@ -254,7 +257,40 @@ function sun(){
 }
 
 function koi(){
+  colorMode(RGB, 255, 255, 255, 1);
+  noStroke();
+  fill(0);
+  // ellipse(0, -150, 20, 12)
+  triangle(-5, -155, -14, -150, -5, -145);
+  fill(250, 234, 95);
+  rect(-10, -7.5-150, 20, 15, 15)
+  fill(0);
+  rect(-4.5, -7.5-150, 3, 15)
+  rect(1.5, -7.5-150, 3, 15)
+  fill(190, 227, 235, 0.75);
+  bezier(0, 0-150, -17.5, 17.5-150, 17.5, 17.5-150, 0, 0-150);
+  bezier(0, 0-150, -17.5, -17.5-150, 17.5, -17.5-150, 0, 0-150);
+  noFill()
+  strokeWeight(1);
+  stroke(0);
+  beginShape();
+  vertex(8, -2.5-150);
+  quadraticVertex(12, -3-150, 14, -7-150);
+  endShape();
+  beginShape();
+  vertex(8, 2.5-150);
+  quadraticVertex(12, 3-150, 14, 7-150);
+  endShape();
+}
+
+function daisy(x, y){
+  translate(x, y)
   noStroke();
   fill(255);
-  ellipse(0, -150, 20, 12)
+    for (let i = 0; i <= 12; i++) {
+    rotate(30);
+    bezier(0, -2, -9, -25, 9, -25, 0, -2);
+    }
+  fill(250, 234, 95);
+  circle(0, 0, 10);
 }
