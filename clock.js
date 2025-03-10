@@ -7,6 +7,7 @@ var scalar = 10;  // set the radius of circle
 var startX = 0;	// set the x-coordinate for the circle center
 var startY = 0;	// set the y-coordinate for the circle center
 
+
 function draw_clock(obj) {
   // draw your own clock here based on the values of obj:
   //    obj.hours goes from 0-23
@@ -22,6 +23,7 @@ function draw_clock(obj) {
   translate(width/2, height/2);
   angleMode(DEGREES);
 
+
   var x = startX + scalar * cos(angle);
   var y = startY + scalar * sin(angle);
 
@@ -29,39 +31,59 @@ function draw_clock(obj) {
   // rotate(lilypadSpin);
   // centreFlower(x, y);
 
-  let koiSwim = map(obj.seconds, 0, 59, 0, 359);
+  let buzzing = map(obj.seconds, 0, 59, 0, 359);
   let heliotropic = map(obj.hours, 0, 23, 0, 359);
   // var koiX = startXKoi + scalarKoi * cos(angle);
   // var koiY = startYKoi + scalarKoi * sin(angle);
 
-  push();
-  rotate(heliotropic);
-  push();
-  translate(0, 45);
-  shadow();
-  pop();
-  sunflower();
-  sun();
-  pop();
+  console.log(obj.seconds_until_alarm || obj.seconds_until_alarm === undefined)
+  if(obj.seconds_until_alarm < 0){
+    push();
+    rotate(15)
+    translate(-100, 50);
+    for (let i = 0; i <= 12; i++) {
+      rotate(30);
+      daisy(0, -100)
+      }
+      fill(255, 0, 0)
+      rect(0, 0, 50);
+    pop()
+    }
+    else if (obj.seconds_until_alarm > 0){
+      push();
+      daisy(0, -150);
+      pop();
+    }
+    else {
+      push();
+      daisy(0, -150);
+      pop();
+    }
 
-  push();
-  rotate(koiSwim);
-  koi();
-  pop();
-
-  push();
-    daisy(0, 175)
-  pop();
-
-  // angle++;
-
-  translate(-width/2, -height/2);
-  push();
-  noStroke();
-  fill(255);
-  rect(0, 0, height/2, height);
-  rect((width+height)/2, 0, height/2, height);
-  pop();
+      push();
+      rotate(heliotropic);
+      push();
+      translate(0, 45);
+      shadow();
+      pop();
+      sunflower();
+      sun();
+      pop();
+    
+      push();
+      rotate(buzzing);
+      bee();
+      pop();
+    
+      // angle++;
+    
+      translate(-width/2, -height/2);
+      push();
+      noStroke();
+      fill(255);
+      rect(0, 0, height/2, height);
+      rect((width+height)/2, 0, height/2, height);
+      pop();
 }
 
 function sunflower() {
@@ -256,7 +278,7 @@ function sun(){
   circle(0, -375, 275);
 }
 
-function koi(){
+function bee(){
   colorMode(RGB, 255, 255, 255, 1);
   noStroke();
   fill(0);
@@ -284,13 +306,17 @@ function koi(){
 }
 
 function daisy(x, y){
-  translate(x, y)
+  translate(x, y);
   noStroke();
   fill(255);
+  push()
     for (let i = 0; i <= 12; i++) {
     rotate(30);
     bezier(0, -2, -9, -25, 9, -25, 0, -2);
     }
+    pop()
   fill(250, 234, 95);
   circle(0, 0, 10);
 }
+
+// if(obj.minutes )
