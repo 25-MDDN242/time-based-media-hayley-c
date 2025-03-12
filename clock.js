@@ -17,9 +17,13 @@ function draw_clock(obj) {
   background(78, 150, 77);
   translate(width/2, height/2);
   angleMode(DEGREES);
-  
-  let buzzing = map(obj.seconds, 0, 59, 0, 359); // seconds map for bee's path
+
+  let secs = obj.seconds;
+  let millis = obj.millis;
+  let exactSeconds = secs + millis / 1000.0;
+  let buzzing = map(exactSeconds, 0, 59, 0, 359); // seconds map for bee's path
   let heliotropic = map(obj.hours, 0, 23, 0, 359); // hours map for heliotropic sunflower
+
 
   console.log(obj.seconds_until_alarm || obj.seconds_until_alarm === undefined)
   if(obj.seconds_until_alarm < 0){
@@ -232,10 +236,10 @@ function sun(){
 }
 
 function bee(){
+
   colorMode(RGB, 255, 255, 255, 1);
   noStroke();
   fill(0);
-  // ellipse(0, -150, 20, 12)
   triangle(-5, -155, -14, -150, -5, -145);
   fill(250, 234, 95);
   rect(-10, -7.5-150, 20, 15, 15)
@@ -264,9 +268,13 @@ function daisy(x, y){
   noStroke();
   fill(255);
 
+  let petalLength = -10 - frameCount*0.5
+
   for (let i = 0; i <= 12; i++) {
   rotate(30);
-  bezier(0, -2, -9, -25, 9, -25, 0, -2);
+  bezier(0, -2, -9, petalLength, 9, petalLength, 0, -2);
+  if (petalLength < -25){
+    petalLength = -25}
   }
 
   fill(250, 234, 95);
@@ -303,6 +311,12 @@ function daisyAlarm(){
 }
 
 function daisyField(){
+  for (let i = 0; i <= 12; i++) {
+    rotate(30);
+    fill(250, 234, 95);
+    circle(0, 0, 10);
+    }
+
   let r = 180;
   if (obj.minutes >= 0 && obj.minutes < 5){
     daisy(0, r);
