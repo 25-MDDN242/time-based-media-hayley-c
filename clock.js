@@ -33,9 +33,9 @@ function draw_clock(obj) {
       pop();
     }
     else {
-      // push();
-      // daisy(0, -150);
-      // pop();
+      push();
+      daisyField();
+      pop();
     }
 
       // centre sunflower
@@ -303,70 +303,29 @@ function daisyAlarm(){
 }
 
 function daisyField(){
-
-//   let r = 180;
-//   // // draws daisies at [x, y]
-//   // let minuteDaisy = [
-//   //   [0, -r], // 0 - 4 minutes
-//   //   [r*sin(30), -r*cos(30)], // 5 - 9 minutes
-//   //   [r*cos(30), -r*sin(30)], // 10 - 14 minutes
-//   //   [r, 0], // 15 - 19 minutes
-//   //   [r*cos(30), r*sin(30)], // 20 - 24 minutes
-//   //   [r*sin(30), r*cos(30)], // 25 - 29 minutes
-//   //   [0, r], // 30 - 34 minutes
-//   //   [-r*sin(30), r*cos(30)], // 35 - 39 minutes
-//   //   [-r*cos(30), r*sin(30)], // 40 - 44 minutes
-//   //   [-r, 0], // 45 - 49 minutes
-//   //   [-r*sin(30), -r*cos(30)], // 50 - 54 minutes
-//   //   [-r*cos(30), -r*sin(30)], // 55 - 59 minutes
-//   // ]
-
-  // 5 - 9 minutes
-  if(obj.minutes >= 5 && obj.minutes < 9) {
-  daisy(r*sin(30), -r*cos(30));
+  let r = 180;
+  if (obj.minutes >= 0 && obj.minutes < 5){
+    daisy(0, r);
+  } else if (obj.minutes >= 5 && obj.minutes < 10){
+    daisy(r*sin(30), -r*cos(30));
+  } else if (obj.minutes >= 10 && obj.minutes < 15){
+    daisy(r*cos(30), -r*sin(30));
+  } else if (obj.minutes >= 15 && obj.minutes < 20){
+    daisy(r, 0);
+  } else if (obj.minutes >= 20 && obj.minutes < 25){
+    daisy(r*cos(30), r*sin(30));
+  } else if (obj.minutes >= 25 && obj.minutes < 30){
+    daisy(r*sin(30), r*cos(30));
+  } else if (obj.minutes >= 30 && obj.minutes < 35){
+    daisy(0, r);
+  } else if (obj.minutes >= 35 && obj.minutes < 40){
+    daisy(-r*sin(30), r*cos(30));
+  } else if (obj.minutes >= 40 && obj.minutes < 45){
+    daisy(-r*cos(30), r*sin(30));
+  } else if (obj.minutes >= 45 && obj.minutes < 50){
+    daisy(-r, 0);
+  } else if (obj.minutes >= 50 && obj.minutes < 55){
+    daisy(-r*sin(30), -r*cos(30));
+  } else {
+    daisy(-r*cos(30), -r*sin(30)); }
   }
-  // 10 - 14 minutes
-//   // else if (obj.minutes >= 10 && obj.minutes < 14) {
-//   // daisy(r*cos(30), -r*sin(30)I)
-//   //}
-  // 15 - 19 minutes
-//   else if (obj.minutes >= 15 && obj.minutes < 19) {
-//   daisy(150, 0)
-//   }
-//   // 20 - 24 minutes
-//   // else if (obj.minutes >= 20 && obj.minutes < 24) {
-//   // daisy()
-//   //}
-  // 25 - 29 minutes
-//   // else if (obj.minutes >= 25 && obj.minutes < 29) {
-//   // daisy()
-//   //}
-  // 30 - 34 minutes
-//   // else if (obj.minutes >= 30 && obj.minutes < 34) {
-//   // daisy()
-//   //}
-  // 35 - 39 minutes
-//   // else if (obj.minutes >= 35 && obj.minutes < 39) {
-//   // daisy()
-//   //}
-  // 40 - 44 minutes
-//   // else if (obj.minutes >= 40 && obj.minutes < 44) {
-//   // daisy()
-//   //}
-  // 45 - 49 minutes
-//   else if (obj.minutes >= 45 && obj.minutes < 49) {
-//   daisy(-150, 0)
-//   }
-  // 50 - 54 minutes
-//   // else if (obj.minutes >= 50 && obj.minutes < 54) {
-//   // daisy()
-//   //}
-//   // 55 - 59 minutes
-//   else if (obj.minutes >= 55 && obj.minutes < 59) {
-//   daisy()
-//   }
-//   // 0 - 4 minutes
-//   else{
-//   daisy(0, -r)
-//   }
-}
