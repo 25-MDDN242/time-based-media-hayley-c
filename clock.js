@@ -2,11 +2,6 @@
  * use p5.js to draw a clock on a 960x500 canvas
  */
 
-var angle = 0;	// initialize angle variable
-var scalar = 10;  // set the radius of circle
-var startX = 0;	// set the x-coordinate for the circle center
-var startY = 0;	// set the y-coordinate for the circle center
-
 
 function draw_clock(obj) {
   // draw your own clock here based on the values of obj:
@@ -22,75 +17,63 @@ function draw_clock(obj) {
   background(78, 150, 77);
   translate(width/2, height/2);
   angleMode(DEGREES);
-
-
-  var x = startX + scalar * cos(angle);
-  var y = startY + scalar * sin(angle);
-
-  // let lilypadSpin = map(obj.minutes, 0, 59, 0, 359);
-  // rotate(lilypadSpin);
-  // centreFlower(x, y);
-
-  let buzzing = map(obj.seconds, 0, 59, 0, 359);
-  let heliotropic = map(obj.hours, 0, 23, 0, 359);
-  // var koiX = startXKoi + scalarKoi * cos(angle);
-  // var koiY = startYKoi + scalarKoi * sin(angle);
+  
+  let buzzing = map(obj.seconds, 0, 59, 0, 359); // seconds map for bee's path
+  let heliotropic = map(obj.hours, 0, 23, 0, 359); // hours map for heliotropic sunflower
 
   console.log(obj.seconds_until_alarm || obj.seconds_until_alarm === undefined)
   if(obj.seconds_until_alarm < 0){
     push();
-    rotate(15)
-    translate(-100, 50);
-    for (let i = 0; i <= 12; i++) {
-      rotate(30);
-      daisy(0, -100)
-      }
-      fill(255, 0, 0)
-      rect(0, 0, 50);
-    pop()
+    daisyAlarm();
+    pop();
     }
     else if (obj.seconds_until_alarm > 0){
       push();
-      daisy(0, -150);
+      daisyField();
       pop();
     }
     else {
-      push();
-      daisy(0, -150);
-      pop();
+      // push();
+      // daisy(0, -150);
+      // pop();
     }
 
+      // centre sunflower
       push();
-      rotate(heliotropic);
+      rotate(heliotropic); // heliotropic motion
       push();
-      translate(0, 45);
-      shadow();
+
+      // sunflower shadow
+      translate(0, 45); //offeset shadow
+      shadow(); //shadow
       pop();
-      sunflower();
-      sun();
+
+      // sunflower
+      sunflower(); //sunflower
+      sun(); //
       pop();
     
+      //bee
       push();
-      rotate(buzzing);
-      bee();
+      rotate(buzzing); // rotating bee circle motion
+      bee(); // bee with spinning motion
       pop();
     
-      // angle++;
-    
-      translate(-width/2, -height/2);
+      // padding
+      translate(-width/2, -height/2); // translate (0, 0) to centre of canvas
       push();
-      noStroke();
-      fill(255);
-      rect(0, 0, height/2, height);
-      rect((width+height)/2, 0, height/2, height);
+      noStroke(); // no stroke weight
+      fill(255); // white colour
+      rect(0, 0, height/2, height); // left rectangle
+      rect((width+height)/2, 0, height/2, height); // right rectangle
       pop();
 }
 
 function sunflower() {
   noStroke();
 
-  fill(77, 44, 11);  
-  ellipse(0, 0, 80, 50);
+  fill(77, 44, 11); // brown colour 
+  ellipse(0, 0, 80, 50); // disk floret
 
   fill(232, 192, 14);
 
@@ -162,20 +145,14 @@ function sunflower() {
   rotate(240);
   bezier(-1.5, -28, -35, -125, 35, -125, 9.5, -32);
   pop();
-
-  // noFill();
-  // stroke(255)
-  // strokeWeight(3)
-  // ellipse(0, - 25, 250, 125);
-
 }
 
 function shadow() {
 
-  noStroke();
+  noStroke(); // no outline
 
-  fill(30, 64, 29);  
-  ellipse(0, 0, 80, 50);
+  fill(30, 64, 29); // dark green colour
+  ellipse(0, 0, 80, 50); // disk floret
 
   // 12 o'clock petal
   bezier(-5, -21, -45, -130, 45, -130, 5, -21);
@@ -245,31 +222,7 @@ function shadow() {
   rotate(240);
   bezier(-1.5, -28, -35, -125, 35, -125, 9.5, -32);
   pop();
-
-  // noFill();
-  // stroke(255)
-  // strokeWeight(3)
-  // ellipse(0, - 25, 250, 125);
-
 }
-
-// function centreFlower(x, y) {
-//   colorMode(RGB, 255, 255, 255, 1);
-//   angleMode(DEGREES);
-//   push();
-//   translate(x, y);
-//   noStroke();
-//   fill(34, 112, 51);
-//   arc(0, 0, 250, 250, -70, 270);
-//   fill(250, 172, 231, 0.4);
-//   for (let i = 0; i <= 12; i++) {
-//     rotate(30);
-//     ellipse(0, 0, 40, 100 + obj.seconds);
-//   }
-//   fill(240, 209, 36);
-//   ellipse(0, 0, 50);
-//   pop();
-// }
 
 function sun(){
   noStroke();
@@ -306,17 +259,114 @@ function bee(){
 }
 
 function daisy(x, y){
+  push();
   translate(x, y);
   noStroke();
   fill(255);
-  push()
-    for (let i = 0; i <= 12; i++) {
-    rotate(30);
-    bezier(0, -2, -9, -25, 9, -25, 0, -2);
-    }
-    pop()
+
+  for (let i = 0; i <= 12; i++) {
+  rotate(30);
+  bezier(0, -2, -9, -25, 9, -25, 0, -2);
+  }
+
   fill(250, 234, 95);
   circle(0, 0, 10);
+  pop()
+
 }
 
-// if(obj.minutes )
+function daisyAlarm(){
+
+  let r = 180;
+  // draws daisies at [x, y]
+  let fieldArray = [
+    [0, -r], // 0 - 4 minutes
+    [r*sin(30), -r*cos(30)], // 5 - 9 minutes
+    [r*cos(30), -r*sin(30)], // 10 - 14 minutes
+    [r, 0], // 15 - 19 minutes
+    [r*cos(30), r*sin(30)], // 20 - 24 minutes
+    [r*sin(30), r*cos(30)], // 25 - 29 minutes
+    [0, r], // 30 - 34 minutes
+    [-r*sin(30), r*cos(30)], // 35 - 39 minutes
+    [-r*cos(30), r*sin(30)], // 40 - 44 minutes
+    [-r, 0], // 45 - 49 minutes
+    [-r*sin(30), -r*cos(30)], // 50 - 54 minutes
+    [-r*cos(30), -r*sin(30)], // 55 - 59 minutes
+  ]
+
+  for (let i = 0; i < fieldArray.length; i++) {
+    let x = fieldArray[i][0]; // x coordinate
+    let y = fieldArray[i][1]; // y coordinate
+
+    daisy(x, y);
+  }
+}
+
+function daisyField(){
+
+//   let r = 180;
+//   // // draws daisies at [x, y]
+//   // let minuteDaisy = [
+//   //   [0, -r], // 0 - 4 minutes
+//   //   [r*sin(30), -r*cos(30)], // 5 - 9 minutes
+//   //   [r*cos(30), -r*sin(30)], // 10 - 14 minutes
+//   //   [r, 0], // 15 - 19 minutes
+//   //   [r*cos(30), r*sin(30)], // 20 - 24 minutes
+//   //   [r*sin(30), r*cos(30)], // 25 - 29 minutes
+//   //   [0, r], // 30 - 34 minutes
+//   //   [-r*sin(30), r*cos(30)], // 35 - 39 minutes
+//   //   [-r*cos(30), r*sin(30)], // 40 - 44 minutes
+//   //   [-r, 0], // 45 - 49 minutes
+//   //   [-r*sin(30), -r*cos(30)], // 50 - 54 minutes
+//   //   [-r*cos(30), -r*sin(30)], // 55 - 59 minutes
+//   // ]
+
+  // 5 - 9 minutes
+  if(obj.minutes >= 5 && obj.minutes < 9) {
+  daisy(r*sin(30), -r*cos(30));
+  }
+  // 10 - 14 minutes
+//   // else if (obj.minutes >= 10 && obj.minutes < 14) {
+//   // daisy(r*cos(30), -r*sin(30)I)
+//   //}
+  // 15 - 19 minutes
+//   else if (obj.minutes >= 15 && obj.minutes < 19) {
+//   daisy(150, 0)
+//   }
+//   // 20 - 24 minutes
+//   // else if (obj.minutes >= 20 && obj.minutes < 24) {
+//   // daisy()
+//   //}
+  // 25 - 29 minutes
+//   // else if (obj.minutes >= 25 && obj.minutes < 29) {
+//   // daisy()
+//   //}
+  // 30 - 34 minutes
+//   // else if (obj.minutes >= 30 && obj.minutes < 34) {
+//   // daisy()
+//   //}
+  // 35 - 39 minutes
+//   // else if (obj.minutes >= 35 && obj.minutes < 39) {
+//   // daisy()
+//   //}
+  // 40 - 44 minutes
+//   // else if (obj.minutes >= 40 && obj.minutes < 44) {
+//   // daisy()
+//   //}
+  // 45 - 49 minutes
+//   else if (obj.minutes >= 45 && obj.minutes < 49) {
+//   daisy(-150, 0)
+//   }
+  // 50 - 54 minutes
+//   // else if (obj.minutes >= 50 && obj.minutes < 54) {
+//   // daisy()
+//   //}
+//   // 55 - 59 minutes
+//   else if (obj.minutes >= 55 && obj.minutes < 59) {
+//   daisy()
+//   }
+//   // 0 - 4 minutes
+//   else{
+//   daisy(0, -r)
+//   }
+}

@@ -22,12 +22,33 @@ The Maeda clock I have recreates is the vertical digital clock that emulates the
 
 ### Part 2: Original Clock 
 
+
+#### Flower Type
+I intitially started by trying to create the centre sunflower in code. However, I quickly realised the difficulty of rotating a sunflower in 2D, so I decided to change my idea slightly. Rather than a sunflower, I chose to create a water lily in a pond. The water lily petals blooms to show the seconds, and the lilypad shows the minutes. I am also currently working on a koi fish to swim around the pond to show the seconds. I haven't yet decided how I want to display the hours or what the alarm function will look like.
+
 #### Orbiting Flower
-To create the effect of the flower moving in a circle I referenced Move in a Circle by kchung [Move in a Circle example sketch](https://editor.p5js.org/kchung/sketches/SJkdHhWUQ)
+To create the effect of the flower bobbing in a circle I referenced Move in a Circle by kchung [Move in a Circle example sketch](https://editor.p5js.org/kchung/sketches/SJkdHhWUQ)
 
-Because of the difficulty of rotating a sunflower, I decided to change my idea slightly. Rather than a sunflower, I chose to create a water lily in a pond. The water lily petals blooms to show the seconds, and the lilypad shows the minutes. I am also currently working on a koi fish to swim around the pond to show the seconds. I haven't yet decided how I want to display the hours or what the alarm function will look like.
+#### Re: Flower Type
+Although the lotus flower is easier to contruct and implement a spinning motion, I still found myself attached to the idea of a sunflower and its heliotropic nature. After considering how I would be able to achieve the appearance I wanted to explore using a aerial perspective of the sunflower rather than a front view. I think this idea may work if I also include a orbiting sun and a shadow.
 
-Although the water lily pond idea has a lot of potential, I was still quite attached to the idea of a heliotropic sunflower. Rather than a front on perspective of a spinning sunflower, I want to try using a top down perspective and rotate the sunflower in a circle which would be easier to create. I think using a shadow behind the flower and an orbit sun will help sell the idea. 
+From the water lily idea, I still want to incorporate the motion of the koi fish to show the seconds, so I will chnage this to a bee for the sunflower clock.
+
+I am still unsure of how I will show minutes or what the alarm function will look like.
+
+#### Sunflower - Part 1
+This is how my sunflower currently looks with the shadow added behind it. I think its shape and perspective is slightly off, however I am going to move onto creating the basics and functionality code of the other aspects of the clock first. I also want to add a gradient effect to the petals later, so that the flower has more dimension to it, and maybe also leaves.
+
+#### Buzzy Bee
+Using the code I had previously intended to use for the koi fish, I used it to create a bee moving around the sunflower. I might later experiment with adding a trail behind the bee.
+
+#### Sun Part 1
+I added a basic circle shape as the sun that orbits around the sunflower. I later want to add a gradient effect on this too as the sun's edge is quite harsh, but I think the clock will look better if it appears as a soft glow.
+
+#### Padding
+Because of the design of the clock, with the sunflower at the centre and the sun and bee orbiting around it, I found the shape of the canvas wasn't necessarily the most fitting for this context. Rather than editing the size of the canvas, I have chosen to add white rectangles to pad out the sides of the canvas. 
+
+#### 
 
 ### Part 2: Clock Alarm
 
