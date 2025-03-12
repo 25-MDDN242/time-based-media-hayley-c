@@ -25,6 +25,7 @@ The Maeda clock I have recreates is the vertical digital clock that emulates the
 
 #### Flower Type
 I intitially started by trying to create the centre sunflower in code. However, I quickly realised the difficulty of rotating a sunflower in 2D, so I decided to change my idea slightly. Rather than a sunflower, I chose to create a water lily in a pond. The water lily petals blooms to show the seconds, and the lilypad shows the minutes. I am also currently working on a koi fish to swim around the pond to show the seconds. I haven't yet decided how I want to display the hours or what the alarm function will look like.
+![Screenshot of the bee asset function](/assets/waterLily.png)
 
 #### Orbiting Flower
 To create the effect of the flower bobbing in a circle I referenced Move in a Circle by kchung [Move in a Circle example sketch](https://editor.p5js.org/kchung/sketches/SJkdHhWUQ)
@@ -38,17 +39,22 @@ I am still unsure of how I will show minutes or what the alarm function will loo
 
 #### Sunflower - Part 1
 This is how my sunflower currently looks with the shadow added behind it. I think its shape and perspective is slightly off, however I am going to move onto creating the basics and functionality code of the other aspects of the clock first. I also want to add a gradient effect to the petals later, so that the flower has more dimension to it, and maybe also leaves.
+![Screenshot of the first sunflower iteration](/assets/sunflowerPart1.png)
 
 #### Buzzy Bee
 Using the code I had previously intended to use for the koi fish, I used it to create a bee moving around the sunflower. I might later experiment with adding a trail behind the bee.
+![Screenshot of the bee asset function](/assets/bee.png)
 
 #### Sun Part 1
 I added a basic circle shape as the sun that orbits around the sunflower. I later want to add a gradient effect on this too as the sun's edge is quite harsh, but I think the clock will look better if it appears as a soft glow.
+![Screenshot of sun that orbits around the sunflower](/assets/sunPart1.jpg)
 
 #### Padding
 Because of the design of the clock, with the sunflower at the centre and the sun and bee orbiting around it, I found the shape of the canvas wasn't necessarily the most fitting for this context. Rather than editing the size of the canvas, I have chosen to add white rectangles to pad out the sides of the canvas. 
+![Screenshot of the bee asset function](/assets/padding.png)
 
 #### 
+![Screenshot of the bee asset function](/assets/daisyAlarm.png)
 
 ### Part 2: Clock Alarm
 
