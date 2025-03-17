@@ -11,7 +11,7 @@ Update this file as you go along to record your progress.
 The initial sketch of my original clock was inspired by Kircher’s sunflower clock, which uses the heliotropic nature of a sunflower to indicate the time as the flower rotates to face the sun, and Linnaeus’s flower clock, where different species of flowers would open and close at particular times of the day to indicate the time. Although both of these clocks are not realistic methods of telling time, I found the idea of using the behaviour of flowers an intriguing way of visually representing the concept of time. 
 
 Kircher's sunflower clock:
-![Kircher's sunflower clock.](https://lh3.googleusercontent.com/ci/AL18g_R0ehquoKDgFWay6DCSqpdE44Qiy1jwG7ZRqv2_z33NuanKep_24mv4b0gPVqRe2H4q_9SspQ=s1200)
+![Kircher's sunflower clock.](hhttps://lh3.googleusercontent.com/ci/AL18g_QznFLNR3n9UifsS-qkIIHk0SNP-IRVS-YcdGltLqC7YJD1I_iR-fdB62_q_ywOJoY6SOBgOP8)
 
 Linnaeus's flower clock:
 ![Linnaeus's flower clock.](https://static01.nyt.com/images/2015/01/29/garden/29GARDEN1/29GARDEN1-superJumbo.jpg)
@@ -42,7 +42,7 @@ This is how my sunflower currently looks with the shadow added behind it. I thin
 ![Screenshot of the first sunflower iteration](/assets/sunflowerPart1.png)
 
 #### Buzzy Bee
-Using the code I had previously intended to use for the koi fish, I used it to create a bee moving around the sunflower. I might later experiment with adding a trail behind the bee.
+Using the code I had previously intended to use for the koi fish, I used it to create a bee moving around the sunflower. I initially used obj.seconds to make the bee fly around the flower. However to make this motion smoother, I later changed it to use exact seconds which made the bee's motion more natural
 ![Screenshot of the bee asset function](/assets/bee.png)
 
 #### Sun Part 1
@@ -51,11 +51,13 @@ I added a basic circle shape as the sun that orbits around the sunflower. I late
 
 #### Padding
 Because of the design of the clock, with the sunflower at the centre and the sun and bee orbiting around it, I found the shape of the canvas wasn't necessarily the most fitting for this context. Rather than editing the size of the canvas, I have chosen to add white rectangles to pad out the sides of the canvas. 
-![Screenshot of the bee asset function](/assets/padding.png)
+![Screenshot of clock without padding](/assets/sunPart1.png)
+![Screenshot of clock with padding](/assets/padding.png)
 
 #### 
-![Screenshot of the bee asset function](/assets/daisyAlarm.png)
+![Screenshot of the bee asset function](/assets/daisyAlarm.jpg)
 
 ### Part 2: Clock Alarm
+For the alarm function
 
 ### Part 5: Final Clock 

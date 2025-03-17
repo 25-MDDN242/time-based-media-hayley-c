@@ -7,6 +7,14 @@ var fieldArray = [];
 var twelveDaisies = true;
 var fullBloom = false;
 
+// let radius = 10;
+// let angle = 0;
+// let speed = 0.01;
+
+var angle = 0.0;
+var sway = 0.0;
+var period = 8;// makes the time longer with increase period value
+
 function populate_fieldArray() {
  fieldArray = [
   [0, -r], // 0 - 4 minutes
@@ -21,39 +29,59 @@ function populate_fieldArray() {
   [-r, 0], // 45 - 49 minutes
   [-r*sin(30), -r*cos(30)], // 50 - 54 minutes
   [-r*cos(30), -r*sin(30)], // 55 - 59 minutes
-]
+  ]
 }
 
 function draw_clock(obj) {
-// draw your own clock here based on the values of obj:
-//    obj.hours goes from 0-23
-//    obj.minutes goes from 0-59
-//    obj.seconds goes from 0-59
-//    obj.millis goes from 0-999
-//    obj.seconds_until_alarm is:
-//        < 0 if no alarm is set
-//        = 0 if the alarm is currently going off
-//        > 0 --> the number of seconds until alarm should go off
+  // draw your own clock here based on the values of obj:
+  //    obj.hours goes from 0-23
+  //    obj.minutes goes from 0-59
+  //    obj.seconds goes from 0-59
+  //    obj.millis goes from 0-999
+  //    obj.seconds_until_alarm is:
+  //        < 0 if no alarm is set
+  //        = 0 if the alarm is currently going off
+  //        > 0 --> the number of seconds until alarm should go off
 
-background(78, 150, 77);
-translate(width/2, height/2);
-angleMode(DEGREES);
+  background(78, 150, 77); // green background colour
+  translate(width/2, height/2); // translate (0, 0) to canvas centre
+  angleMode(DEGREES); // set angle mode to degrees
 
-populate_fieldArray();
+  populate_fieldArray();
 
-let secs = obj.seconds;
-let millis = obj.millis;
-let exactSeconds = secs + millis / 1000.0;
-let buzzing = map(exactSeconds, 0, 59, 0, 359); // seconds map for bee's path
-let heliotropic = map(obj.hours, 0, 23, 0, 359); // hours map for heliotropic sunflower
+  let secs = obj.seconds;
+  let millis = obj.millis;
+  let exactSeconds = secs + millis / 1000.0;
+  let buzzing = map(exactSeconds, 0, 59, 0, 359); // seconds map for bee's path
+  let heliotropic = map(obj.hours, 0, 23, 0, 359); // hours map for heliotropic sunflower
 
-
-console.log(obj.seconds_until_alarm || obj.seconds_until_alarm === undefined)
-if(obj.seconds_until_alarm < 0){
+  // centre sunflower
   push();
-  twelveDaisies = true;
-  daisyAlarm();
+  rotate(heliotropic); // heliotropic motion
+
+  // sunflower shadow
+  translate(0, 45); //offeset shadow
+  shadow(); //shadow
   pop();
+
+  push();
+  grass(period);
+  pop();
+
+  // sunflower
+  push();
+  rotate(heliotropic); // heliotropic motion
+  sunflower(); //sunflower
+  sun(); //
+  pop();
+
+
+  console.log(obj.seconds_until_alarm || obj.seconds_until_alarm === undefined)
+  if(obj.seconds_until_alarm < 0){
+    push();
+    twelveDaisies = true;
+    daisyAlarm();
+    pop();
   }
   else if (obj.seconds_until_alarm > 0){
     push();
@@ -67,36 +95,98 @@ if(obj.seconds_until_alarm < 0){
     pop();
   }
 
-    // centre sunflower
-    push();
-    rotate(heliotropic); // heliotropic motion
-    push();
+  //bee
+  push();
+  rotate(buzzing); // rotating bee circle motion
+  bee(); // bee with spinning motion
+  pop();
 
-    // sunflower shadow
-    translate(0, 45); //offeset shadow
-    shadow(); //shadow
-    pop();
+  // padding
+  translate(-width/2, -height/2); // translate (0, 0) to centre of canvas
+  push();
+  noStroke(); // no stroke weight
+  fill(255); // white colour
+  rect(0, 0, height/2, height); // left rectangle
+  rect((width+height)/2, 0, height/2, height); // right rectangle
+  pop();
 
-    // sunflower
-    sunflower(); //sunflower
-    sun(); //
-    pop();
-  
-    //bee
-    push();
-    rotate(buzzing); // rotating bee circle motion
-    bee(); // bee with spinning motion
-    pop();
-  
-    // padding
-    translate(-width/2, -height/2); // translate (0, 0) to centre of canvas
-    push();
-    noStroke(); // no stroke weight
-    fill(255); // white colour
-    rect(0, 0, height/2, height); // left rectangle
-    rect((width+height)/2, 0, height/2, height); // right rectangle
-    pop();
 }
+
+function grass(period){
+
+  var amplitude = 8; // distance of motion
+  var angle = frameCount / period * TWO_PI; //period is 
+  sway = cos(angle) * amplitude;
+
+     let grassArray = [
+    [-100, -100],
+    [200, -100],
+    [-40, 200],
+    [-120, 80],
+    [50, 140],
+    [180, 60],
+    [-160, 20],
+    [-150, 180],
+    [180, 190],
+    [-170, -160],
+    [-30, -210],
+    [140, -190],
+    [50, -90],
+    [50, 140],
+    [180, 60],
+    [-160, 20],
+    [-150, 180],
+    [180, 190],
+  ]
+
+  for (let i = 0; i < grassArray.length; i++) {
+    let x = grassArray[i][0]; // x coordinate
+    let y = grassArray[i][1]; // y coordinate
+
+    push();
+    translate(x, y);
+    noStroke();
+    fill(3, 102, 30);
+    beginShape();
+    vertex(sway, 0);
+    bezierVertex(0 + 13, 0 + 6, 0 + 13, 0 + 8, 0 + 18, 0 + 23);
+    bezierVertex(0 + 10, 0 + 8, 0 + 12, 0 + 10, sway, 0);
+    endShape();
+    pop();
+  }
+
+
+  // stroke(3, 102, 30);
+  // fill(3, 102, 30);
+
+  //   push();
+  //   translate(centerX, centerY)
+  //   rotate (angle);
+  //   // line(0, 0, radius, -15);
+  //   noStroke();
+  //   beginShape();
+  //   vertex(0, 0);
+  //   bezierVertex(radius - 13, -6, radius - 13, -8, radius - 18, -23);
+  //   bezierVertex(radius - 10, -8, radius - 12, -10, 0, 0);
+  //   endShape();
+  //   angle = angle + speed;
+  
+  //   if (angle >= PI) {
+  //     speed = -0.01;
+  //   } else if (angle <= 0) {
+  //     speed = 0.01;
+  //   }
+  
+  //   pop();
+  }
+
+  //   noStroke();
+  //   beginShape();
+  //   vertex(x, y);
+  //   bezierVertex(x + 13, y + 6, x + 13, y + 8, x + 18, y + 23);
+  //   bezierVertex(x + 10, y + 8, x + 12, y + 10, x, y);
+  //   endShape();
+  //}
 
 function sunflower() {
 noStroke();
@@ -261,26 +351,36 @@ circle(0, -375, 275);
 }
 
 function bee(){
-
 colorMode(RGB, 255, 255, 255, 1);
 noStroke();
-fill(0);
-triangle(-5, -155, -14, -150, -5, -145);
-fill(250, 234, 95);
+
+// bee's stinger
+fill(0); // black colour
+triangle(-5, -155 + random(-1, 1), -14, -150 + random(-1, 1), -5, -145 + random(-0.5, 0.5));
+
+// bee's body
+fill(250, 234, 95); // yellow colour
 rect(-10, -7.5-150, 20, 15, 15)
-fill(0);
-rect(-4.5, -7.5-150, 3, 15)
-rect(1.5, -7.5-150, 3, 15)
-fill(190, 227, 235, 0.75);
-bezier(0, 0-150, -17.5, 17.5-150, 17.5, 17.5-150, 0, 0-150);
-bezier(0, 0-150, -17.5, -17.5-150, 17.5, -17.5-150, 0, 0-150);
-noFill()
-strokeWeight(1);
-stroke(0);
+
+// bee's stripes
+fill(0); // black colour
+rect(-4.5, -7.5-150, 3, 15) // top stripe
+rect(1.5, -7.5-150, 3, 15) // bottom stripe
+
+// bee's wings
+fill(190, 227, 235, 0.75); // transparent light blue colour
+bezier(0, 0-150, -17.5, 17.5-150, 17.5, 17.5-150, 0, 0-150); // right wing 
+bezier(0, 0-150, -17.5, -17.5-150, 17.5, -17.5-150, 0, 0-150); // left wing
+
+// bee's antennae
+strokeWeight(1); // anntennae width
+stroke(0); // black colour
+// left curved antenna
 beginShape();
 vertex(8, -2.5-150);
 quadraticVertex(12, -3-150, 14, -7-150);
 endShape();
+// right curved antenna
 beginShape();
 vertex(8, 2.5-150);
 quadraticVertex(12, 3-150, 14, 7-150);
@@ -299,19 +399,18 @@ function drawDaisy(x, y, isBloomed = false) {
   if(isBloomed === true) {
     petalLength -= frameCount * 0.1;
   }
-  for (let i = 0; i <= 12; i++) {
-    rotate(30);
-    console.log("hi")
-    bezier(0, -2, -9, petalLength, 9, petalLength, 0, -2);
-  
-    if(isBloomed === true) {
-      if (petalLength <= -25) {
-        petalLength = -25
+
+    for (let i = 0; i <= 12; i++) {
+      rotate(30);
+      if(petalLength >= -25){
+        bezier(0, -2, -9, petalLength, 9, petalLength, 0, -2);
+      }
+      if(isBloomed === true) {
+        if (petalLength < -25) {
+          petalLength = -25
+        }
       }
     }
-    fullBloom = true;
-  
-  }
   
   fill(250, 234, 95);
   circle(0, 0, 10);
