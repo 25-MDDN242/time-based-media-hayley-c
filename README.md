@@ -20,7 +20,7 @@ Linnaeus's flower clock:
 
 The Maeda clock I have recreates is the vertical digital clock that emulates the seconds hand of an analogue clock to indicate the number of seconds that have passed. I chose to recreate this clock as I feel the rotation of the digital clock is similar to the rotation of the central flower in my original clock, therefore helping to refresh and practice JavaScript skills. A small change I made was using circles rather than squares to create the font of the numbers. 
 
-### Part 2: Original Clock 
+### Part 3: Original Clock 
 
 
 #### Flower Type
@@ -28,7 +28,7 @@ I intitially started by trying to create the centre sunflower in code. However, 
 ![Screenshot of the bee asset function](/assets/waterLily.png)
 
 #### Orbiting Flower
-To create the effect of the flower bobbing in a circle I referenced Move in a Circle by kchung [Move in a Circle example sketch](https://editor.p5js.org/kchung/sketches/SJkdHhWUQ)
+To create the effect of the flower bobbing in a circle I referenced [Move in a Circle by kchung](https://editor.p5js.org/kchung/sketches/SJkdHhWUQ)
 
 #### Re: Flower Type
 Although the lotus flower is easier to contruct and implement a spinning motion, I still found myself attached to the idea of a sunflower and its heliotropic nature. After considering how I would be able to achieve the appearance I wanted to explore using a aerial perspective of the sunflower rather than a front view. I think this idea may work if I also include a orbiting sun and a shadow.
@@ -42,7 +42,7 @@ This is how my sunflower currently looks with the shadow added behind it. I thin
 ![Screenshot of the first sunflower iteration](/assets/sunflowerPart1.png)
 
 #### Buzzy Bee
-Using the code I had previously intended to use for the koi fish, I used it to create a bee moving around the sunflower. I initially used obj.seconds to make the bee fly around the flower. However to make this motion smoother, I later changed it to use exact seconds which made the bee's motion more natural
+Using the code I had previously intended to use for the koi fish, I used it to create a bee moving around the sunflower. I initially used obj.seconds to make the bee fly around the flower. However to make this motion smoother, I later changed it to use exact seconds which made the bee's motion more natural.
 ![Screenshot of the bee asset function](/assets/bee.png)
 
 #### Sun Part 1
@@ -54,10 +54,42 @@ Because of the design of the clock, with the sunflower at the centre and the sun
 ![Screenshot of clock without padding](/assets/sunPart1.png)
 ![Screenshot of clock with padding](/assets/padding.png)
 
-#### 
-![Screenshot of the bee asset function](/assets/daisyAlarm.jpg)
+#### Daisy Field
+The a single bloomed daisy represents the current minutes, while a full field of 12 bloomed daisies appear when the alarm goes off. 
 
-### Part 2: Clock Alarm
+I tried to create the field of daisies using a for loop, however because I have rotated any translated many different elements this resulted in the daisy field being uncentred when using a for loop. So, I used trigonometry to find the co ordinates and added them into an array to place the daisies iondividually.
+
+The blooming motion resulted in a bug where one petal would keep growing, as the for loop to draw the petals kept being drawn. 
+![Screenshot of daisy's petal length bug](/assets/brokenSingleBloom.png)
+
+I resolved this by adding an if statement to only grow the petal length when it was less than a specific length.
+
+Initially I had two separate functions for a bloomed and unbloomed daisy. However, by having the default being an unbloomed daisy then if the daisy needs to be bloomed, the petal length increases.
+
+I also initially had separate functions for the daisy field when the alarm was set and when it was going off. However by using an if statement and condition I was able to combine them into one function, and use the condition when calling thet function for the obj.seconds_until_alarm was less than 0.
+
+![Screenshot of an unbloomed daisy field](/assets/unbloomed.png)
+![Screenshot of a bloomed daisy field](/assets/bloomed.png)
+
+#### Grass field
+To add to the atmospheric feeling of the clock, I experimented with adding grass that would sway in the wind.
+
+For the swaying motion I initally tried to follow pendulum tutorials, however these either included dampening effects or required adding code to the set up function. Eventually I found
+a tutorial by [sr5516 for 11.16, module 4, simple harmonic motion - pendulum motion square](https://editor.p5js.org/sr5516/sketches/F2MIdyRmk). I added this movement to the top of the blade of grass so that it would have a slight swaying effect.
+
+![Screenshot of initial grass field](/assets/initialGrass.png)
+
+After creating the motion, I then altered the shape of the grass and using an array placing more blades of grass into the clock. To add different coloured grass, I repeatedly called the function changing the fill colour and translating it each time. 
+
+![Screenshot of initial grass field](/assets/grassField.png)
+
+#### Glowing Sun
+To make create a glowing effect for the sun, I referenced
+[illumination-glow by jesse_harding](https://editor.p5js.org/jesse_harding/sketches/WpONQ8o6u). I then adjusted the colour and size of the circle to fit better within my clock.
+![Screenshot of the glowing sun](/assets/glowingSun.png)
+
+### Part 4: Clock Alarm
 For the alarm function
+![Screenshot of the alarm](/assets/daisyAlarm.png)
 
 ### Part 5: Final Clock 
