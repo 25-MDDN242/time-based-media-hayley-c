@@ -9,9 +9,11 @@
 The initial sketch of my original clock was inspired by Kircher’s sunflower clock, which uses the heliotropic nature of a sunflower to indicate the time as the flower rotates to face the sun, and Linnaeus’s flower clock, where different species of flowers would open and close at particular times of the day to indicate the time. Although both of these clocks are not realistic methods of telling time, I found the idea of using the behaviour of flowers an intriguing way of visually representing the concept of time. 
 
 Kircher's sunflower clock:
+
 ![Kircher's sunflower clock.](https://d28fxxt57nf3uz.cloudfront.net/uploads/content_picture/2183/FR_Trove_sunflower-clock_kircher_225px.jpg)
 
 Linnaeus's flower clock:
+
 ![Linnaeus's flower clock.](https://static01.nyt.com/images/2015/01/29/garden/29GARDEN1/29GARDEN1-superJumbo.jpg)
 
 ### Part 2: [Maeda Clock](https://25-mddn242.github.io/time-based-media-hayley-c/part2.html)
@@ -77,7 +79,7 @@ translate(x + shakeX, y + shakeY); // daisy centre at (x, y)
 
 A design choice I have made is to include padding on the right and left sides of the canvas to create a square frame around the clock. Because of the smaller scale of the clock’s elements, the tighter framing reduces the empty space thus highlighting the clock itself. 
 ![Clock without padding](/assets/withoutPadding.png)
-![Clock with padding](/assets/withPadding)
+![Clock with padding](/assets/withPadding.png)
 
 The addition of a grass field swaying in the wind, furthers the peaceful atmosphere of the clock and adds more dimension and movement to the scene. The code to create the swaying motion is adapted from [sr5516’s 11.16, module 4, simple harmonic motion - pendulum motion square sketch](https://editor.p5js.org/sr5516/sketches/F2MIdyRmk). I adjusted the variables and applied the motion to just the top of the bezier curves that form the blades of grass. To populate the background with grass I utilized arrays, first for each individual blade then for layers of grass fields. 
 ![Clock without grass field](/assets/withoutField.png)
