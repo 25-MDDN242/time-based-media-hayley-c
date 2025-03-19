@@ -25,8 +25,8 @@ function populate_daisyArray() {
   [-daisySin30, daisyCos30], // 35 - 39 minutes
   [-daisyCos30,daisySin30], // 40 - 44 minutes
   [-daisyFieldRadius, 0], // 45 - 49 minutes
-  [-daisySin30, -daisyCos30], // 50 - 54 minutes
-  [-daisyCos30, -daisySin30], // 55 - 59 minutes
+  [-daisyCos30, -daisySin30], // 50 - 54 minutes
+  [-daisySin30, -daisyCos30], // 55 - 59 minutes
   ]
 }
 
@@ -47,9 +47,12 @@ function draw_clock(obj) {
 
   populate_daisyArray(); // populate daisy location array
 
+  // creating exactSeconds
   let secs = obj.seconds;
   let millis = obj.millis;
   let exactSeconds = secs + millis / 1000.0;
+
+  //maps
   let beeCircle = map(exactSeconds, 0, 59, 0, 359); // seconds map for bee moving in a circle
   let heliotropic = map(obj.hours, 0, 24 / 2, 0, 359); // hours map for heliotropic sunflower
 
@@ -64,14 +67,12 @@ function draw_clock(obj) {
   translate(0, 45); //offeset shadow
   shadow(); // sunflower shadow
   pop();
-
+  leaves(); // sunflower leaves
   sunflower(); // sunflower
   sun(); // sun
   pop();
-
-  console.log(obj.seconds_until_alarm || obj.seconds_until_alarm === undefined)
  
-  if(obj.seconds_until_alarm < 0){ //default clock
+  if(obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined){ //default clock
     push();
     daisyField(); //daisy field
     pop();
@@ -206,51 +207,8 @@ function grassMulticoloured(){
 
 // sunflower function
 function sunflower() {
-
   noStroke(); // no stroke
-
   push();
-  rotate(180); // flip
-
-  // sunflower leaves
-  push();
-
-  // left leaf (when 0:00)
-  rotate(130); // leaf position
-  fill(27, 99, 46); // green colour
-  //leaf shape
-  beginShape();
-  vertex(0, 0);
-  bezierVertex(-40, -20, -30, -90, 0, -120);
-  bezierVertex(15, -90, 20, -20, 0, 0);
-  endShape();
-  // leaf viens 
-  strokeWeight(2); // vien size
-  stroke(16, 69, 30); // darker green
-  line(0, 0, -2, -102); // centre line
-  line(-2, -90, -5, -95); // top line
-  line(-1, -90, 2, -95); // top line
-  line(-1, -75, 5, -85); // middle line
-  line(-1, -55, 7, -70); // bottom line
-
-  // right leaf (when 0:00)
-  noStroke(); // no stroke
-  rotate(100); // leaf position
-  //leaf shape
-  beginShape();
-  vertex(0, 0);
-  bezierVertex(40, -20, 30, -90, 0, -120);
-  bezierVertex(-15, -90, -20, -20, 0, 0);
-  endShape();
-  // leaf viens
-  strokeWeight(2); // vien size
-  stroke(16, 69, 30); // darker green
-  line(0, 0, 2, -102); // centre line
-  line(2, -90, 5, -95); // top line
-  line(1, -90, -2, -95); // top line
-  line(1, -75, -5, -85); // middle line
-  line(1, -55, -7, -70); // bottom line
-  pop();
 
   // disc floret
   fill(77, 44, 11); // brown colour 
@@ -259,76 +217,97 @@ function sunflower() {
   //sunflower petals
   fill(232, 192, 14); // yellow colour
 
-  // 12 o'clock petal (when 0:00)
-  push();
-  rotate(180);
+  // 12 o'clock petal (when 0:00
   bezier(-5.5, -22, -35, -105, 35, -105, 5.5, -22);
-  pop();
 
   // 1 o'clock petal (when 0:00)
-  push();
-  rotate(210);
+  rotate(30);
   bezier(-2.5, -22, -35, -110, 35, -110, 8.5, -24);
-  pop();
 
   // 2 o'clock petal (when 0:00)
-  push();
-  rotate(240);
+  rotate(30);
   bezier(-1.5, -28, -35, -125, 35, -125, 9.5, -32);
-  pop();
 
   // 3 o'clock petal (when 0:00)
-  push();
-  rotate(270);
+  rotate(30);
   bezier(-5, -35, -45, -145, 45, -145, 5, -35);
-  pop();
 
   // 4 o'clock petal (when 0:00)
-  push();
-  rotate(300);
+  rotate(30);
   bezier(-9, -32, -45, -138, 45, -138, 1, -28);
-  pop();
 
   // 5 o'clock petal (when 0:00)
-  push();
-  rotate(330);
+  rotate(30);
   bezier(-8, -24, -45, -133, 45, -133, 2, -22);
-  pop();
 
   // 6 o'clock petal (when 0:00)
-  push();
+  rotate(30);
   bezier(-5, -21, -45, -130, 45, -130, 5, -21);
-  pop();
 
   // 7 o'clock petal (when 0:00)
-  push();
   rotate(30);
   bezier(-2, -22, -45, -133, 45, -133, 8, -24);
-  pop();
 
   // 8 o'clock petal (when 0:00)
-  push();
-  rotate(60);
+  rotate(30);
   bezier(-1, -28, -45, -138, 45, -138, 9, -32);
-  pop();
 
   // 9 o'clock petal (when 0:00)
-  push();
-  rotate(90);
+  rotate(30);
   bezier(-5, -35, -45, -145, 45, -145, 5, -35);
-  pop();
 
-  // 10 o'clock petal (when 0:00)
-  push();
-  rotate(120);
-  bezier(-9.5, -32, -35, -125, 35, -125, 1.5, -28);
-  pop();
+  // 10 o'clock petal (when 0:00
+  rotate(30);
+  bezier(-9.5, -32, -35, -125, 35, -125, 1.5, -28)
 
   // 11 o'clock petal (when 0:00)
-  push();
-  rotate(150);
-  bezier(-8.5, -24, -35, -110, 35, -110, 2.5, -22);
+  rotate(30);
+  bezier(-8.5, -24, -35, -110, 35, -110, 2.5, -22)
+
   pop();
+}
+
+// sunflower leaves
+function leaves(){
+  push();
+
+  // left leaf (when 0:00)
+
+  noStroke();
+  rotate(130); // leaf position
+  fill(27, 99, 46); // green colour
+  //leaf shape
+  beginShape();
+  vertex(0, 0);
+  bezierVertex(-40, 20, -30, 90, 0, 120);
+  bezierVertex(15, 90, 20, 20, 0, 0);
+  endShape();
+  // leaf viens 
+  strokeWeight(2); // vien size
+  stroke(16, 69, 30); // darker green
+  line(0, 0, -2, 102); // centre line
+  line(-2, 90, -5, 95); // top line
+  line(-1, 90, 2, 95); // top line
+  line(-1, 75, -7, 85); // middle line
+  line(-1, 55, -9, 70); // bottom line
+
+  // right leaf (when 0:00)
+  noStroke(); // no stroke
+  rotate(100); // leaf position
+  //leaf shape
+  beginShape();
+  vertex(0, 0);
+  bezierVertex(40, 20, 30, 90, 0, 120);
+  bezierVertex(-15, 90, -20, 20, 0, 0);
+  endShape();
+  // leaf viens
+  strokeWeight(2); // vien size
+  stroke(16, 69, 30); // darker green
+  line(0, 0, 2, 102); // centre line
+  line(2, 90, 5, 95); // top line
+  line(1, 90, -2, 95); // top line
+  line(1, 75, 7, 85); // middle line
+  line(1, 55, 9, 70); // bottom line
 
   pop();
 }
@@ -338,11 +317,11 @@ function shadow() {
   let growShadow;
   // from 6:00 to 12:00 shadow gets longer
   if (obj.hours >= 6 && obj.hours <= 12){ 
-    growShadow = map(obj.hours, 6, 12, 0, -18)  
+    growShadow = map(obj.hours, 6, 12, 0, -20)  
   }
   // from 12:00 to 18:00 shadow gets shorter
   else if ( obj.hours > 12 && obj.hours <= 18 ){
-    growShadow = map(obj.hours, 13,18, -18,0);
+    growShadow = map(obj.hours, 13,18, -20,0);
   }
   // from 18:00 to 6:00 shadow does not change
   else {
@@ -350,82 +329,57 @@ function shadow() {
   }
 
   push();
-  rotate(180); // flip
   noStroke(); // no outline
 
   fill(30, 64, 29, 0.75); // dark green colour
   ellipse(0, 0, 80, 50); // disk floret
 
   // 12 o'clock petal (when 0:00)
-  push();
-  rotate(180);
   bezier(-5.5, -22, -35, -105 + growShadow, 35, -105 + growShadow, 5.5, -22);
-  pop();
 
   // 1 o'clock petal (when 0:00)
-  push();
-  rotate(210);
+  rotate(30);
   bezier(-2.5, -22, -35, -110 + growShadow, 35, -110 + growShadow, 8.5, -24);
-  pop();
 
   // 2 o'clock petal (when 0:00)
-  push();
-  rotate(240);
+  rotate(30);
   bezier(-1.5, -28, -35, -125 + growShadow, 35, -125 + growShadow, 9.5, -32);
-  pop();
 
   // 3 o'clock petal (when 0:00)
-  push();
-  rotate(270);
-  bezier(-5, -35, -45, -145 + growShadow, 45, -145 + growShadow, 5, -35);
-  pop();
+  rotate(30);
+  bezier(-5, -35, -45, -145 + growShadow * .9, 45, -145 + growShadow * .9, 5, -35);
 
   // 4 o'clock petal (when 0:00)
-  push();
-  rotate(300);
-  bezier(-9, -32, -45, -138 + growShadow, 45, -138 + growShadow, 1, -28);
-  pop();
+  rotate(30);
+  bezier(-9, -32, -45, -138 + growShadow * .93, 45, -138 + growShadow  * .93, 1, -28);
 
   // 5 o'clock petal (when 0:00)
-  push();
-  rotate(330);
-  bezier(-8, -24, -45, -133 + growShadow, 45, -133 + growShadow, 2, -22);
-  pop();
+  rotate(30);
+  bezier(-8, -24, -45, -133 + growShadow * .96, 45, -133 + growShadow * .96, 2, -22);
 
   // 6 o'clock petal (when 0:00)
-  push();
+  rotate(30);
   bezier(-5, -21, -45, -130 + growShadow, 45, -130 + growShadow, 5, -21);
-  pop();
 
   // 7 o'clock petal (when 0:00)
-  push();
   rotate(30);
-  bezier(-2, -22, -45, -133 + growShadow, 45, -133 + growShadow, 8, -24);
-  pop();
+  bezier(-2, -22, -45, -133 + growShadow * .96, 45, -133 + growShadow * .96, 8, -24);
 
   // 8 o'clock petal (when 0:00)
-  push();
-  rotate(60);
-  bezier(-1, -28, -45, -138 + growShadow, 45, -138 + growShadow, 9, -32);
-  pop();
+  rotate(30);
+  bezier(-1, -28, -45, -138 + growShadow * .93, 45, -138 + growShadow * .93, 9, -32);
 
   // 9 o'clock petal (when 0:00)
-  push();
-  rotate(90);
-  bezier(-5, -35, -45, -145 + growShadow, 45, -145 + growShadow, 5, -35);
-  pop();
+  rotate(30);
+  bezier(-5, -35, -45, -145 + growShadow * .9, 45, -145 + growShadow * .9, 5, -35);
 
   // 10 o'clock petal (when 0:00)
-  push();
-  rotate(120);
+  rotate(30);
   bezier(-9.5, -32, -35, -125 + growShadow, 35, -125 + growShadow, 1.5, -28);
-  pop();
 
   // 11 o'clock petal (when 0:00)
-  push();
-  rotate(150);
+  rotate(30);
   bezier(-8.5, -24, -35, -110 + growShadow, 35, -110 + growShadow, 2.5, -22);
-  pop();
 
   pop();
 }

@@ -4,23 +4,25 @@
 
 ## Sun(flower) Dial - Hayley Chung 
 
+Sun(flower) Dial visually depicts the concept of time through how sunflowers, daisies, and bees in nature respond to the time throughout the day. The heliotropic nature of the sunflower rotates to follow the sun and displays the hour, the location of the singular bloomed daisy indicates the minutes in five-minute intervals, and the bee flies around in a circle representing the seconds. For the alarm function, all twelve daisies in the field bloom when the alarm is going off. 
+
 ### Part 1: [Sketch](https://25-mddn242.github.io/time-based-media-hayley-c/part1.html)
 
 The initial sketch of my original clock was inspired by Kircher’s sunflower clock, which uses the heliotropic nature of a sunflower to indicate the time as the flower rotates to face the sun, and Linnaeus’s flower clock, where different species of flowers would open and close at particular times of the day to indicate the time. Although both of these clocks are not realistic methods of telling time, I found the idea of using the behaviour of flowers an intriguing way of visually representing the concept of time. 
 
 Kircher's sunflower clock:
 
-![Kircher's sunflower clock.](https://d28fxxt57nf3uz.cloudfront.net/uploads/content_picture/2183/FR_Trove_sunflower-clock_kircher_225px.jpg)
+<img src = "https://d28fxxt57nf3uz.cloudfront.net/uploads/content_picture/2183/FR_Trove_sunflower-clock_kircher_225px.jpg" alt = "Kircher's sunflower clock" width = 300>
 
 Linnaeus's flower clock:
 
-![Linnaeus's flower clock.](https://static01.nyt.com/images/2015/01/29/garden/29GARDEN1/29GARDEN1-superJumbo.jpg)
+<img src = "https://static01.nyt.com/images/2015/01/29/garden/29GARDEN1/29GARDEN1-superJumbo.jpg" alt = "Linnaeus's flower clock" width = 300>
 
 ### Part 2: [Maeda Clock](https://25-mddn242.github.io/time-based-media-hayley-c/part2.html)
 
 The Maeda clock I have recreated is [clock 7](https://codingtrain.github.io/12oclocks/#clock-07), the vertical digital clock that emulates the seconds hand of an analogue clock to indicate the number of seconds that have passed. I chose to recreate this clock as I feel the rotation of the digital clock is similar to the rotation of the central flower in my original clock, therefore helping to refresh and practice JavaScript skills. A small change I made was using circles rather than squares to create the font of the numbers. 
 
-### Part 3: Original Clock 
+### Part 3: Original Clock
 #### Process
 My process began with creating the visual of a flower inside a ring, inspired by Kircher’s sunflower clock while getting used to P5js again. However, because of the 3D perspective I was not sure how to rotate a sunflower. 
 
@@ -100,9 +102,7 @@ Outside the scope of this project, I would explore using changing colours and sh
 ### Part 4: Clock Alarm
 ![Sun(flower) Dial when alarm goes off](/preview.jpg)
 
-### Part 5: Final Clock 
+### Part 5: [Final Clock](https://25-mddn242.github.io/time-based-media-hayley-c/) 
 #### Sun(flower) Dial
-
-Sun(flower) Dial visually depicts the concept of time through how sunflowers, daisies, and bees in nature respond to the time throughout the day. The heliotropic nature of the sunflower rotates to follow the sun and displays the hour, the location of the singular bloomed daisy indicates the minutes in five-minute intervals, and the bee flies around in a circle representing the seconds. For the alarm function, all twelve daisies in the field bloom when the alarm is going off. 
 
 ![Sun(flower) Dial main view](/assets/sun(flower)DialClock.png)
