@@ -2,26 +2,21 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=18378505&assignment_repo_type=AssignmentRepo)
 ## MDDN 242 Project 1: Time-based Media 
 
-## Sun(flower) Dial
-##### Hayley Chung 
+## Sun(flower) Dial - Hayley Chung 
 
-### Part 1: Sketch
-
-[Sketch](/part1.html)
+### Part 1: [Sketch](https://25-mddn242.github.io/time-based-media-hayley-c/part1.html)
 
 The initial sketch of my original clock was inspired by Kircher’s sunflower clock, which uses the heliotropic nature of a sunflower to indicate the time as the flower rotates to face the sun, and Linnaeus’s flower clock, where different species of flowers would open and close at particular times of the day to indicate the time. Although both of these clocks are not realistic methods of telling time, I found the idea of using the behaviour of flowers an intriguing way of visually representing the concept of time. 
 
 Kircher's sunflower clock:
-![Kircher's sunflower clock.](https://d28fxxt57nf3uz.cloudfront.net/uploads/content_picture/2183/FR_Trove_sunflower-clock_kircher_225px.jpg | width = 100)
+![Kircher's sunflower clock.](https://d28fxxt57nf3uz.cloudfront.net/uploads/content_picture/2183/FR_Trove_sunflower-clock_kircher_225px.jpg)
 
 Linnaeus's flower clock:
-![Linnaeus's flower clock.](https://static01.nyt.com/images/2015/01/29/garden/29GARDEN1/29GARDEN1-superJumbo.jpg | width = 100)
+![Linnaeus's flower clock.](https://static01.nyt.com/images/2015/01/29/garden/29GARDEN1/29GARDEN1-superJumbo.jpg)
 
-### Part 2: Maeda Clock 
+### Part 2: [Maeda Clock](https://25-mddn242.github.io/time-based-media-hayley-c/part2.html)
 
-[Maeda Clock](/part2.html)
-
-The Maeda clock I have recreated is ![clock 7](https://codingtrain.github.io/12oclocks/#clock-07), the vertical digital clock that emulates the seconds hand of an analogue clock to indicate the number of seconds that have passed. I chose to recreate this clock as I feel the rotation of the digital clock is similar to the rotation of the central flower in my original clock, therefore helping to refresh and practice JavaScript skills. A small change I made was using circles rather than squares to create the font of the numbers. 
+The Maeda clock I have recreated is [clock 7](https://codingtrain.github.io/12oclocks/#clock-07), the vertical digital clock that emulates the seconds hand of an analogue clock to indicate the number of seconds that have passed. I chose to recreate this clock as I feel the rotation of the digital clock is similar to the rotation of the central flower in my original clock, therefore helping to refresh and practice JavaScript skills. A small change I made was using circles rather than squares to create the font of the numbers. 
 
 ### Part 3: Original Clock 
 #### Process
@@ -35,7 +30,7 @@ Although this was easier to create with code, I was attached to the idea of a he
 
 Rather showing a front view of the sunflower, an aerial perspective would better suit the code medium. To create the illusion of the sunflower following the sun’s motion to show the hour, I used the shape of the petal to make the flower appear slightly tilted, added a glowing sun, and a shadow. The code for the glowing sun is from the sketch [illumination-glow by jesse_harding](https://editor.p5js.org/jesse_harding/sketches/WpONQ8o6u). I adjusted the colour and size to better suit my clock. 
 
-'''
+```
 function sun(){
   colorMode(RGB, 255) // rgb colour mode
   noStroke(); // no stroke
@@ -44,7 +39,7 @@ function sun(){
     ellipse(0, -325, i * 3); // feathered circle
   }
 }
-'''
+```
 
 For the seconds, I added a bee which flies around in a circle showing the clock’s seconds. I have used random number to create a buzzing effect. For the bee’s motion I had initially mapped obj.seconds, but later created a map with exact seconds to create a smoother more natural motion for the bee. 
 
@@ -61,7 +56,7 @@ I initially had the code for the daisy field separated into many different funct
 When setting the alarm the daises begin to shake, indicating that the alarm will go off soon. For this code, I referenced [Move in a Circle
 by kchung](https://editor.p5js.org/kchung/sketches/SJkdHhWUQ).
 
-'''
+```
 var shakeAngle = 0;	// initialize daisies' shake angle
 var daisyShakeRadius = .5;  // radius of daisies' shake
 
@@ -78,7 +73,7 @@ shakeX = 0;
 shakeY = 0;
 }
 translate(x + shakeX, y + shakeY); // daisy centre at (x, y)
-'''
+```
 
 A design choice I have made is to include padding on the right and left sides of the canvas to create a square frame around the clock. Because of the smaller scale of the clock’s elements, the tighter framing reduces the empty space thus highlighting the clock itself. 
 ![Clock without padding](/assets/withoutPadding.png)
@@ -88,7 +83,7 @@ The addition of a grass field swaying in the wind, furthers the peaceful atmosph
 ![Clock without grass field](/assets/withoutField.png)
 ![Clock with grass field](/assets/withField.png)
 
-'''
+```
 var swayPeriod = 0.0; // define grass swaying period
 var sway = 0.0; // define sway motion
 var swayMotion = 0.0; // define sway period
@@ -96,7 +91,7 @@ var swayMotion = 0.0; // define sway period
 var amplitude = 8; // swaying distance
 var swayPeriod = frameCount / 8 * TWO_PI; // period of sway
 sway = cos(swayPeriod) * amplitude; // sway motion
-'''
+```
 
 Outside the scope of this project, I would explore using changing colours and shades to reflect day and night. I would also work on blooming and unblooming the diasies when the minutes change to create a smoother transition.
 
