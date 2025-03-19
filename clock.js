@@ -5,6 +5,7 @@
 var daisyArray = []; // define daisy array
 var swayPeriod = 0.0; // define grass swaying period
 var sway = 0.0; // define sway motion
+let growSun; // define sun growth's default as 0
 
 var shakeAngle = 0;	// initialize daisies' shake angle
 var daisyShakeRadius = .5;  // radius of daisies' shake
@@ -73,16 +74,19 @@ function draw_clock(obj) {
   pop();
  
   if(obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined){ //default clock
+    growSun = 0;
     push();
     daisyField(); //daisy field
     pop();
   }
   else if (obj.seconds_until_alarm > 0){ // alarm count down
+    growSun = 0;
     push();
     daisyField(); // daisy field
     pop();
   }
   else { // alarm going off 
+    growSun = 25; // larger sun
     push();
     daisyField(true); // daisy field
     pop();
@@ -98,7 +102,10 @@ function draw_clock(obj) {
   translate(-width / 2, -height / 2); // translate (0, 0) to top left of canvas
   push();
   noStroke(); // no stroke weight
-  fill(255); // white colour
+  fill(252, 238, 149); // white colour
+  // for(i = 0; i < 100; i++){
+  //   ellipse(0, -325, i * 3); // feathered circle
+  // }
   rect(0, 0, height / 2, height); // left rectangle
   rect((width + height) / 2, 0, height / 2, height); // right rectangle
   pop();
@@ -272,7 +279,6 @@ function leaves(){
   push();
 
   // left leaf (when 0:00)
-
   noStroke();
   rotate(130); // leaf position
   fill(27, 99, 46); // green colour
@@ -389,7 +395,8 @@ function sun(){
   colorMode(RGB, 255) // rgb colour mode
   noStroke(); // no stroke
   fill(255, 238, 128, 8); // transparent yellow colour
-  for(i = 0; i < 100; i++){
+
+  for(i = 0; i < 100 + growSun; i++){
     ellipse(0, -325, i * 3); // feathered circle
   }
 }

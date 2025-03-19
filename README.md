@@ -4,11 +4,11 @@
 
 ## Sun(flower) Dial - Hayley Chung 
 
-Sun(flower) Dial visually depicts the concept of time through how sunflowers, daisies, and bees in nature respond to the time throughout the day. The heliotropic nature of the sunflower rotates to follow the sun and displays the hour, the location of the singular bloomed daisy indicates the minutes in five-minute intervals, and the bee flies around in a circle representing the seconds. For the alarm function, all twelve daisies in the field bloom when the alarm is going off. 
+Sun(flower) Dial visually depicts the concept of time through how sunflowers, daisies, and bees in nature respond to the time throughout the day. This method of telling time was inspired by Kircher's sunflower clock and Linnaeus's flower clock. The heliotropic nature of the sunflower rotates to follow the sun and displays the hour, the location of the singular bloomed daisy indicates the minutes in five-minute intervals, and the bee flies around in a circle representing the seconds. For the alarm function, all twelve daisies in the field bloom when the alarm is going off. 
 
 ### Part 1: [Sketch](https://25-mddn242.github.io/time-based-media-hayley-c/part1.html)
 
-The initial sketch of my original clock was inspired by Kircher’s sunflower clock, which uses the heliotropic nature of a sunflower to indicate the time as the flower rotates to face the sun, and Linnaeus’s flower clock, where different species of flowers would open and close at particular times of the day to indicate the time. Although both of these clocks are not realistic methods of telling time, I found the idea of using the behaviour of flowers an intriguing way of visually representing the concept of time. 
+The initial sketch of my original clock was inspired by [Kircher's sunflower clock](https://agosto-foundation.org/athanasius-kircher-sunflower-clock), which uses the heliotropic nature of a sunflower to indicate the time as the flower rotates to face the sun, and [Linnaeus's flower clock](https://en.wikipedia.org/wiki/Linnaeus%27s_flower_clock), where different species of flowers would open and close at particular times of the day to indicate the time. Although both of these clocks are not realistic methods of telling time, I found the idea of using the behaviour of flowers an intriguing way of visually representing the concept of time. 
 
 Kircher's sunflower clock:
 
