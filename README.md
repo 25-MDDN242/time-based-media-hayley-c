@@ -50,13 +50,16 @@ To make the alarm more impactful, I increased the size of the sun when the alarm
 
 To more accurately represent how the sunflower's shadow changes over the course of the day, I added maps within if statements to lengthen the shadow between 6:00 and 12:00, then shhorten it between 12:00 and 18:00. I explored making the lengthening effect more dramatic, however this altered the ratio between the petal shadows' length and width. So, in addition to lengthening the shadows, I also scaled them up and down slightly which didn't impact the ratio too much.
 
+<img src = "/assets/largeShadow.png" alt = "Largest lengthened and scaled shadow" width = 600>
+
+
 For the seconds, I added a bee which flies around in a circle showing the clock’s seconds. I have used random number to create a buzzing effect. For the bee’s motion I had initially mapped obj.seconds, but later created a map with exact seconds to create a smoother more natural motion for the bee. 
 
 To determine the location of the 12 daisies, I had tried to use a for loop. However, because I was often translating (0, 0) and rotating around it, the coordinate system was mixed up. So, I used trigonometry to find the co ordinates and added them into an array to place the daisies individually.
 
 For the daisy shapes, I used a for loop the petals. However, when animating the petals for a blooming effect, the for loop would continue to draw resulting in a bug where one petal would continue to grow.
 
-<img src = "/assets/petalBug.jpg" alt = "Bloominng petal length bug" width = 600>
+<img src = "/assets/petalBug.png" alt = "Blooming petal length bug" width = 600>
 
 Adding an if statement and condition to only increase the petal’s length when it was not fully bloomed fixed this bug. 
 
@@ -83,7 +86,7 @@ shakeY = 0;
 translate(x + shakeX, y + shakeY); // daisy centre at (x, y)
 ```
 
-A design choice I have made is to include padding on the right and left sides of the canvas to create a square frame around the clock. Because of the smaller scale of the clock’s elements, the tighter framing reduces the empty space thus highlighting the clock itself. The padding was white to begin with but I later changed it to a light yello shade to make the clock more cohesive
+A design choice I have made is to include padding on the right and left sides of the canvas to create a square frame around the clock. Because of the smaller scale of the clock’s elements, the tighter framing reduces the empty space thus highlighting the clock itself. The padding was white to begin with but I later changed it to a light yello shade to make the clock more cohesive.
 <img src = "/assets/withoutPadding.png" alt = "Clock without padding" width = 600>
 <img src = "/assets/withPadding.png" alt = "Clock with padding" width = 600>
 <img src = "/assets/yellowPadding.png" alt = "Clock with padding" width = 600>
