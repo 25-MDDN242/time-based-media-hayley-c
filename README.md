@@ -4,7 +4,7 @@
 
 ## Sun(flower) Dial - Hayley Chung 
 
-Sun(flower) Dial visually depicts the concept of time through how sunflowers, daisies, and bees in nature respond to the time throughout the day. This method of telling time was inspired by Kircher's sunflower clock and Linnaeus's flower clock. The heliotropic nature of the sunflower rotates to follow the sun and displays the hour, the location of the singular bloomed daisy indicates the minutes in five-minute intervals, and the bee flies around in a circle representing the seconds. For the alarm function, all twelve daisies in the field bloom when the alarm is going off. 
+Sun(flower) Dial visually depicts the concept of time through how sunflowers, daisies, and bees in nature respond to the time throughout the day. This method of telling time was inspired by Kircher's sunflower clock and Linnaeus's flower clock. The heliotropic nature of the sunflower rotates to follow the sun and displays the hour, and the size of the shadow changes to reflect the time of day. The location of the singular bloomed daisy indicates the minutes in five-minute intervals, when the alarm is set all twelve daisies begin to shake until the alarm goes off and all twelve daisies are in full bloom. The bee flies around in a circle representing the seconds.
 
 ### Part 1: [Sketch](https://25-mddn242.github.io/time-based-media-hayley-c/part1.html)
 
@@ -29,7 +29,7 @@ My process began with creating the visual of a flower inside a ring, inspired by
 I explored the possibility of a clock with a blooming water lily and koi fish in a pond. 
 Although this was easier to create with code, I was attached to the idea of a heliotropic sunflower following the sun.
 
-<img src = "/assets/waterLily.jpg" alt = "Exploration of a water lily clock" width = 300>
+<img src = "/assets/waterLily.jpg" alt = "Exploration of a water lily clock" width = 600>
 
 Rather showing a front view of the sunflower, an aerial perspective would better suit the code medium. To create the illusion of the sunflower following the sun’s motion to show the hour, I used the shape of the petal to make the flower appear slightly tilted, added a glowing sun, and a shadow. 
 
@@ -46,7 +46,9 @@ function sun(){
 }
 ```
 
-To more accurately represent how the sunflower's shadow changes oover the course of the day, I added maps within if statements to lengthen the shadow between 6:00 and 12:00, then shhorten it between 12:00 and 18:00 
+To make the alarm more impactful, I increased the size of the sun when the alarm goes off.
+
+To more accurately represent how the sunflower's shadow changes over the course of the day, I added maps within if statements to lengthen the shadow between 6:00 and 12:00, then shhorten it between 12:00 and 18:00. I explored making the lengthening effect more dramatic, however this altered the ratio between the petal shadows' length and width. So, in addition to lengthening the shadows, I also scaled them up and down slightly which didn't impact the ratio too much.
 
 For the seconds, I added a bee which flies around in a circle showing the clock’s seconds. I have used random number to create a buzzing effect. For the bee’s motion I had initially mapped obj.seconds, but later created a map with exact seconds to create a smoother more natural motion for the bee. 
 
@@ -54,7 +56,7 @@ To determine the location of the 12 daisies, I had tried to use a for loop. Howe
 
 For the daisy shapes, I used a for loop the petals. However, when animating the petals for a blooming effect, the for loop would continue to draw resulting in a bug where one petal would continue to grow.
 
-<img src = "/assets/petalBug.jpg" alt = "Bloominng petal length bug" width = 300>
+<img src = "/assets/petalBug.jpg" alt = "Bloominng petal length bug" width = 600>
 
 Adding an if statement and condition to only increase the petal’s length when it was not fully bloomed fixed this bug. 
 
@@ -81,14 +83,15 @@ shakeY = 0;
 translate(x + shakeX, y + shakeY); // daisy centre at (x, y)
 ```
 
-A design choice I have made is to include padding on the right and left sides of the canvas to create a square frame around the clock. Because of the smaller scale of the clock’s elements, the tighter framing reduces the empty space thus highlighting the clock itself. 
-<img src = "/assets/withoutPadding.png" alt = "Clock without padding" width = 300>
-<img src = "/assets/withPadding.png" alt = "Clock with padding" width = 300>
+A design choice I have made is to include padding on the right and left sides of the canvas to create a square frame around the clock. Because of the smaller scale of the clock’s elements, the tighter framing reduces the empty space thus highlighting the clock itself. The padding was white to begin with but I later changed it to a light yello shade to make the clock more cohesive
+<img src = "/assets/withoutPadding.png" alt = "Clock without padding" width = 600>
+<img src = "/assets/withPadding.png" alt = "Clock with padding" width = 600>
+<img src = "/assets/yellowPadding.png" alt = "Clock with padding" width = 600>
 
 The addition of a grass field swaying in the wind, furthers the peaceful atmosphere of the clock and adds more dimension and movement to the scene. The code to create the swaying motion is adapted from [sr5516’s 11.16, module 4, simple harmonic motion - pendulum motion square sketch](https://editor.p5js.org/sr5516/sketches/F2MIdyRmk). I adjusted the variables and applied the motion to just the top of the bezier curves that form the blades of grass. To populate the background with grass I utilized arrays, first for each individual blade then for layers of grass fields.
 
-<img src = "/assets/withoutField.png" alt = "Clock without grass field" width = 300>
-<img src = "/assets/withField.png" alt = "Clock with grass field" width = 300>
+<img src = "/assets/withoutField.png" alt = "Clock without grass field" width = 600>
+<img src = "/assets/withField.png" alt = "Clock with grass field" width = 600>
 
 ```
 var swayPeriod = 0.0; // define grass swaying period
@@ -103,8 +106,8 @@ sway = cos(swayPeriod) * amplitude; // sway motion
 Outside the scope of this project, I would explore using changing colours and shades to reflect day and night. I would also work on blooming and unblooming the diasies when the minutes change to create a smoother transition.
 
 ### Part 4: Clock Alarm
-<img src = "/preview.jpg" alt = "Sun(flower) Dial when alarm goes off" width = 300>
+<img src = "/preview.jpg" alt = "Sun(flower) Dial when alarm goes off">
 
 ### Part 5: [Final Clock](https://25-mddn242.github.io/time-based-media-hayley-c/) 
 #### Sun(flower) Dial
-<img src = "/assets/sun(flower)DialClock.png" alt = "Sun(flower) Dial main view" width = 300>
+<img src = "/assets/sun(flower)DialClock.png" alt = "Sun(flower) Dial main view">

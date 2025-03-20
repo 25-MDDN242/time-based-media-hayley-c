@@ -10,6 +10,7 @@ let growSun; // define sun growth's default as 0
 var shakeAngle = 0;	// initialize daisies' shake angle
 var daisyShakeRadius = .5;  // radius of daisies' shake
 
+// coordinates of daisies array
 function populate_daisyArray() {
   const daisyFieldRadius = 180; // radius of daisy field
   const daisySin30 = daisyFieldRadius * sin(30); // daisy field radius * sin(30)
@@ -68,12 +69,11 @@ function draw_clock(obj) {
   translate(0, 45); //offeset shadow
   shadow(); // sunflower shadow
   pop();
-  leaves(); // sunflower leaves
   sunflower(); // sunflower
   sun(); // sun
   pop();
  
-  if(obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined){ //default clock
+  if(obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined){ // default clock
     growSun = 0;
     push();
     daisyField(); //daisy field
@@ -102,10 +102,7 @@ function draw_clock(obj) {
   translate(-width / 2, -height / 2); // translate (0, 0) to top left of canvas
   push();
   noStroke(); // no stroke weight
-  fill(252, 238, 149); // white colour
-  // for(i = 0; i < 100; i++){
-  //   ellipse(0, -325, i * 3); // feathered circle
-  // }
+  fill(240, 239, 173); // light yellow colour
   rect(0, 0, height / 2, height); // left rectangle
   rect((width + height) / 2, 0, height / 2, height); // right rectangle
   pop();
@@ -189,6 +186,7 @@ function grassMulticoloured(){
   const green3 = color(32, 120, 43);
   const green4 = color(32, 120, 43);
 
+  // multicoloured field array
   let fieldArray = [
     [0, -40, green1],
     [-36, -12, green1],
@@ -207,7 +205,7 @@ function grassMulticoloured(){
     push();
     fill(fieldColour); // grass colours 
     translate(fieldX, fieldY); // single grass field position
-    grass(); // single gras field 
+    grass(); // single grass field 
     pop();
   }
 }
@@ -217,6 +215,15 @@ function sunflower() {
   noStroke(); // no stroke
   push();
 
+  // sunflower leaves
+  push();
+  rotate(130);
+  leaves(); // left leaf (when 0:00)
+  scale(-1, 1); // flip
+  rotate(-100); 
+  leaves(); // right leaf (when 0:00)
+  pop();
+
   // disc floret
   fill(77, 44, 11); // brown colour 
   ellipse(0, 0, 80, 50); // disk floret
@@ -224,7 +231,7 @@ function sunflower() {
   //sunflower petals
   fill(232, 192, 14); // yellow colour
 
-  // 12 o'clock petal (when 0:00
+  // 12 o'clock petal (when 0:00)
   bezier(-5.5, -22, -35, -105, 35, -105, 5.5, -22);
 
   // 1 o'clock petal (when 0:00)
@@ -274,13 +281,9 @@ function sunflower() {
   pop();
 }
 
-// sunflower leaves
+// sunflower leaf
 function leaves(){
-  push();
-
-  // left leaf (when 0:00)
-  noStroke();
-  rotate(130); // leaf position
+  noStroke(); // no stroke
   fill(27, 99, 46); // green colour
   //leaf shape
   beginShape();
@@ -296,96 +299,81 @@ function leaves(){
   line(-1, 90, 2, 95); // top line
   line(-1, 75, -7, 85); // middle line
   line(-1, 55, -9, 70); // bottom line
-
-  // right leaf (when 0:00)
-  noStroke(); // no stroke
-  rotate(100); // leaf position
-  //leaf shape
-  beginShape();
-  vertex(0, 0);
-  bezierVertex(40, 20, 30, 90, 0, 120);
-  bezierVertex(-15, 90, -20, 20, 0, 0);
-  endShape();
-  // leaf viens
-  strokeWeight(2); // vien size
-  stroke(16, 69, 30); // darker green
-  line(0, 0, 2, 102); // centre line
-  line(2, 90, 5, 95); // top line
-  line(1, 90, -2, 95); // top line
-  line(1, 75, 7, 85); // middle line
-  line(1, 55, 9, 70); // bottom line
-
-  pop();
 }
 
 // sunflower shadow function
 function shadow() {
-  let growShadow;
-  // from 6:00 to 12:00 shadow gets longer
+  let lengthenShadow; // define lengthening shadow map
+  let scaleShadow; // define scaling shadow map
+  // from 6:00 to 12:00 shadow grows
   if (obj.hours >= 6 && obj.hours <= 12){ 
-    growShadow = map(obj.hours, 6, 12, 0, -20)  
+    lengthenShadow = map(obj.hours, 6, 12, 0, -20);
+    scaleShadow = map(obj.hours, 6, 12, 1, 1.1);
   }
-  // from 12:00 to 18:00 shadow gets shorter
+  // from 12:00 to 18:00 shadow shrinks
   else if ( obj.hours > 12 && obj.hours <= 18 ){
-    growShadow = map(obj.hours, 13,18, -20,0);
+    lengthenShadow = map(obj.hours, 13, 18, -20, 0);
+    scaleShadow = map(obj.hours, 6, 12, 0.9, 1);
   }
   // from 18:00 to 6:00 shadow does not change
   else {
-    growShadow = 0;
+    lengthenShadow = 0;
+    scaleShadow = 1;
   }
 
   push();
+  scale(scaleShadow); // scale shadow
   noStroke(); // no outline
 
   fill(30, 64, 29, 0.75); // dark green colour
   ellipse(0, 0, 80, 50); // disk floret
 
   // 12 o'clock petal (when 0:00)
-  bezier(-5.5, -22, -35, -105 + growShadow, 35, -105 + growShadow, 5.5, -22);
+  bezier(-5.5, -22, -35, -105 + lengthenShadow, 35, -105 + lengthenShadow, 5.5, -22);
 
   // 1 o'clock petal (when 0:00)
   rotate(30);
-  bezier(-2.5, -22, -35, -110 + growShadow, 35, -110 + growShadow, 8.5, -24);
+  bezier(-2.5, -22, -35, -110 + lengthenShadow, 35, -110 + lengthenShadow, 8.5, -24);
 
   // 2 o'clock petal (when 0:00)
   rotate(30);
-  bezier(-1.5, -28, -35, -125 + growShadow, 35, -125 + growShadow, 9.5, -32);
+  bezier(-1.5, -28, -35, -125 + lengthenShadow, 35, -125 + lengthenShadow, 9.5, -32);
 
   // 3 o'clock petal (when 0:00)
   rotate(30);
-  bezier(-5, -35, -45, -145 + growShadow * .9, 45, -145 + growShadow * .9, 5, -35);
+  bezier(-5, -35, -45, -145 + lengthenShadow * .9, 45, -145 + lengthenShadow * .9, 5, -35);
 
   // 4 o'clock petal (when 0:00)
   rotate(30);
-  bezier(-9, -32, -45, -138 + growShadow * .93, 45, -138 + growShadow  * .93, 1, -28);
+  bezier(-9, -32, -45, -138 + lengthenShadow * .93, 45, -138 + lengthenShadow  * .93, 1, -28);
 
   // 5 o'clock petal (when 0:00)
   rotate(30);
-  bezier(-8, -24, -45, -133 + growShadow * .96, 45, -133 + growShadow * .96, 2, -22);
+  bezier(-8, -24, -45, -133 + lengthenShadow * .96, 45, -133 + lengthenShadow * .96, 2, -22);
 
   // 6 o'clock petal (when 0:00)
   rotate(30);
-  bezier(-5, -21, -45, -130 + growShadow, 45, -130 + growShadow, 5, -21);
+  bezier(-5, -21, -45, -130 + lengthenShadow, 45, -130 + lengthenShadow, 5, -21);
 
   // 7 o'clock petal (when 0:00)
   rotate(30);
-  bezier(-2, -22, -45, -133 + growShadow * .96, 45, -133 + growShadow * .96, 8, -24);
+  bezier(-2, -22, -45, -133 + lengthenShadow * .96, 45, -133 + lengthenShadow * .96, 8, -24);
 
   // 8 o'clock petal (when 0:00)
   rotate(30);
-  bezier(-1, -28, -45, -138 + growShadow * .93, 45, -138 + growShadow * .93, 9, -32);
+  bezier(-1, -28, -45, -138 + lengthenShadow * .93, 45, -138 + lengthenShadow * .93, 9, -32);
 
   // 9 o'clock petal (when 0:00)
   rotate(30);
-  bezier(-5, -35, -45, -145 + growShadow * .9, 45, -145 + growShadow * .9, 5, -35);
+  bezier(-5, -35, -45, -145 + lengthenShadow * .9, 45, -145 + lengthenShadow * .9, 5, -35);
 
   // 10 o'clock petal (when 0:00)
   rotate(30);
-  bezier(-9.5, -32, -35, -125 + growShadow, 35, -125 + growShadow, 1.5, -28);
+  bezier(-9.5, -32, -35, -125 + lengthenShadow, 35, -125 + lengthenShadow, 1.5, -28);
 
   // 11 o'clock petal (when 0:00)
   rotate(30);
-  bezier(-8.5, -24, -35, -110 + growShadow, 35, -110 + growShadow, 2.5, -22);
+  bezier(-8.5, -24, -35, -110 + lengthenShadow, 35, -110 + lengthenShadow, 2.5, -22);
 
   pop();
 }
@@ -448,13 +436,15 @@ function daisyShape(x, y, isBloomed = false) {
   let shakeX; // define daises X axis shake
   let shakeY; // define daises X axis shake
   
+  // shaking daisy when alarm is set
   if (obj.seconds_until_alarm > 0){
-    shakeX = daisyShakeRadius * cos(shakeAngle)
-    shakeY = daisyShakeRadius * sin(shakeAngle);
-    shakeAngle += 2.5;
+    shakeX = daisyShakeRadius * cos(shakeAngle); // move daisy along x axis
+    shakeY = daisyShakeRadius * sin(shakeAngle); // move daisy along y axis
+    shakeAngle += 2.5; // 
   } 
+  // daisy is stationary
   else {
-    shakeX = 0;
+    shakeX = 0; 
     shakeY = 0;
   }
   translate(x + shakeX, y + shakeY); // daisy centre at (x, y)
